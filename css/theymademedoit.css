@@ -113,23 +113,36 @@ normal | multiply | screen | overlay | darken | lighten | color-dodge
 @-webkit-keyframes track {
   100% {
     transform: translate3d(-50%, 0, 0); } }
-.ident--find .ident__background {
-  -webkit-animation: track 15s infinite linear;
-  background: #2ab9e5 url("../images/find-bg-01.jpg") repeat left center;
-  width: 500%; }
-.ident--find .ident__subject {
-  background: transparent url("../images/find-subject-01.png") no-repeat left top;
-  background-size: 100%;
-  height: 101%;
-  left: -15%;
-  position: absolute;
-  top: 1%;
-  transform: rotate(-1.6deg);
-  width: 120%; }
-.ident--find .ident__msg {
-  -webkit-animation: fly 10s infinite linear;
-  background: transparent url("../images/find-msg-01.png") no-repeat 90% 5%;
-  background-size: 40%; }
+@-webkit-keyframes twirl {
+  0%, 2%, 4% {
+    transform: rotate3d(0, 0, 1, -359deg); }
+  1%, 3%, 5%, 100% {
+    transform: rotate3d(0, 0, 1, -1.6deg); } }
+@-webkit-keyframes chaos {
+  0%, 49%, 51%, 100% {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1) skew(0); }
+  50%, 50.9999% {
+    transform: translate3d(-20%, 0, 0) scale3d(0.3, 0.7, 1) skew(10deg, 2deg); } }
+.ident--find {
+  -webkit-animation: chaos 20s infinite linear; }
+  .ident--find .ident__background {
+    -webkit-animation: track 15s infinite linear;
+    background: #2ab9e5 url("../images/find-bg-01.jpg") repeat left center;
+    width: 500%; }
+  .ident--find .ident__subject {
+    -webkit-animation: twirl 10s infinite linear;
+    background: url("../images/find-subject-01.png") no-repeat left top;
+    background-size: 100%;
+    height: 101%;
+    left: -15%;
+    position: absolute;
+    top: 1%;
+    transform-origin: 65% 75%;
+    width: 120%; }
+  .ident--find .ident__msg {
+    -webkit-animation: fly 10s infinite linear;
+    background: transparent url("../images/find-msg-01.png") no-repeat 90% 5%;
+    background-size: 40%; }
 
 .paused .animated {
   -webkit-animation-play-state: paused;
