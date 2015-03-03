@@ -1,0 +1,128 @@
+@-webkit-keyframes gone {
+  0%, 80% {
+    transform: none;
+  }
+
+  100% {
+    transform: skewX(50deg) skewY(30deg) rotate(-25deg) scale(0.6);
+  }
+}
+
+/*
+normal | multiply | screen | overlay | darken | lighten | color-dodge
+| color-burn | hard-light | soft-light | difference | exclusion | hue
+| saturation | color | luminosity
+*/
+
+@-webkit-keyframes breathe {
+  50%, 52% {
+    background-color: orange;
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  51%, 51.9999% {
+    background-color: #00d2ff;
+    transform: scale3d(2, 3, 2.8) rotate(45deg);
+  }
+
+  95%, 97% {
+    background-color: #001961;
+    transform: scale3d(1.3, 1.3, 1.3);
+  }
+
+  96%, 96.9999% {
+    background-color: #7eff00;
+    transform: scale3d(2, 5, 5.5) rotate(-58deg);
+  }
+}
+
+@-webkit-keyframes enter {
+  0% {
+    transform: translate3d(-300%, 0, 0) rotate(-270deg);
+  }
+
+  20%, 70% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(300%, 0, 0) rotate(270deg);
+  }
+}
+
+@-webkit-keyframes closeup {
+  0%, 48%, 51%, 68%, 71% {
+    background-size: 75%;
+    -webkit-filter: brightness(1);
+  }
+
+  50%, 50.9999% {
+    background-size: 300%;
+    -webkit-filter: brightness(3);
+  }
+
+  70%, 70.9999% {
+    background-size: 20%;
+    -webkit-filter: brightness(2);
+  }
+}
+
+@-webkit-keyframes tweak {
+  0%, 28%, 31% {
+    left: 0;
+    top: 0;
+  }
+
+  30%, 30.9999% {
+    left: -20%;
+    top: 30%;
+  }
+}
+
+@-webkit-keyframes fidgit {
+  0%, 7%, 11%, 47%, 52% {
+    transform: scale3d(1, 1, 1);
+  }
+
+  10%, 10.9999% {
+    transform: scale3d(12, -2, 12);
+  }
+
+  50%, 50.9999% {
+    transform: scale3d(2, -5, 2);
+  }
+}
+
+.ident--armed {
+  -webkit-animation: gone 8s infinite linear;
+  animation: gone 8s infinite linear;
+
+  .ident__background {
+    -webkit-animation: breathe 5s infinite linear;
+    animation: breathe 5s infinite linear;
+    background: #e14a52 url("../images/armed-bg-01.png") repeat center center;
+    background-blend-mode: overlay;
+  }
+
+  .ident__background__extra {
+    background: transparent url("../images/armed-bg-extra-01.png") repeat-x left top;
+  }
+
+  .ident__subject {
+    -webkit-animation:
+      enter 8s infinite linear alternate,
+      closeup 6s infinite linear,
+      tweak 6s infinite linear;
+    background: transparent url("../images/armed-subject-01.png") no-repeat center center;
+    background-size: 75%;
+    height: 100%;
+    position: absolute;
+    width: 95%;
+  }
+
+  .ident__msg {
+    -webkit-animation: fidgit 6s infinite linear;
+    background: transparent url("../images/armed-msg-01.png") no-repeat center 87%;
+    background-size: 60%;
+  }
+}

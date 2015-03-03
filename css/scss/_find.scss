@@ -1,0 +1,62 @@
+@-webkit-keyframes fly {
+  0% {
+    transform: translate3d(-100%, 100%, 0) scale(0.2);
+  }
+
+  6.9% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  7%, 9%, 11%, 13%, 15%, 17%, 19%, 21%, 23%, 25%, 27%, 29%, 31%, 33%, 35%,
+  37%, 39%, 41%, 43%, 45%, 47%, 49%, 51%, 53%, 55%, 57%, 59%, 61%, 63%, 65% {
+    transform: translate3d(2px, 0px, 0) scale(1);
+  }
+
+  67%, 69%, 71%, 73%, 75%, 77%, 79%, 81%, 83%, 85%, 87%, 89%, 91%, 93%, 95%, 97%, 99% {
+    transform: translate3d(1px, -1px, 0) scale(1);
+  }
+
+  91%, 92% {
+    transform: skewX(-10deg) skewY(20deg)
+  }
+
+  8%, 10%, 12%, 14%, 16%, 18%, 20%, 22%, 24%, 26%, 28%, 30%, 32%, 34%,
+  38%, 40%, 42%, 44%, 46%, 48%, 50%, 52%, 54%, 56%, 58%, 60%, 62%, 64% {
+    transform: translate3d(-2px, -1px, 0) scale(0.999);
+  }
+
+  68%, 70%, 72%, 74%, 76%, 78%, 80%, 82%, 84%, 86%, 88%, 90%, 92%, 94%, 96%, 98%, 100% {
+    transform: translate3d(-1px, 2px, 0) scale(1);
+  }
+}
+
+@-webkit-keyframes track {
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.ident--find {
+  .ident__background {
+    -webkit-animation: track 15s infinite linear;
+    background: #2ab9e5 url("../images/find-bg-01.jpg") repeat left center;
+    width: 500%;
+  }
+
+  .ident__subject {
+    background: transparent url("../images/find-subject-01.png") no-repeat left top;
+    background-size: 100%;
+    height: 101%;
+    left: -15%;
+    position: absolute;
+    top: 1%;
+    transform: rotate(-1.6deg);
+    width: 120%;
+  }
+
+  .ident__msg {
+    -webkit-animation: fly 10s infinite linear;
+    background: transparent url("../images/find-msg-01.png") no-repeat 90% 5%;
+    background-size: 40%;
+  }
+}

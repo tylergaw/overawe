@@ -1,3 +1,8 @@
+var sound = {
+  play: function(){},
+  pause: function(){}
+};
+
 function makeItStop() {
   var target = document.getElementsByTagName('body')[0],
     className = 'paused';
@@ -25,8 +30,6 @@ function makeDistortionCurve(amount) {
 
   return curve;
 };
-
-var sound = null;
 
 function playSound() {
   var ctx = new webkitAudioContext(),
@@ -62,8 +65,13 @@ function bodyOnKeyup(e) {
 }
 
 function init() {
-  var bod = document.getElementsByTagName('body')[0];
-  playSound();
+  var bod = document.getElementsByTagName('body')[0],
+    audio = window.location.search.indexOf('audio=false');
+
+  if (audio < 0) {
+    playSound();
+  }
+
   bod.addEventListener('keyup', bodyOnKeyup, false);
   bod.addEventListener('click', makeItStop, false);
 }
