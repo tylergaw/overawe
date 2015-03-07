@@ -1,3 +1,32 @@
+var namespace = 'overawe/',
+  isPlaying = true,
+  sceneInterval = null,
+  sceneQueue = 15000,
+  curRouteIndex = 0,
+  notFoundRoute = '404';
+
+var routes = {
+  'armed': function(initialState) {
+    return {
+      template: 'ident--armed'
+    };
+  },
+  'find': function(initialState) {
+    return {
+      template: 'ident--find'
+    };
+  },
+  '404': function(initialState) {
+    return {
+      template: 'ident--404'
+    };
+  }
+};
+
+var playableRoutes = Object.keys(routes).filter(function(key) {
+  return key !== notFoundRoute;
+});
+
 var sound = {
   play: function(){},
   pause: function(){}
@@ -10,10 +39,24 @@ function makeItStop() {
   if (target.classList.contains(className)) {
     sound.play();
     target.classList.remove(className);
+    isPlaying = true;
+    sceneInterval = setInterval(advance, sceneQueue);
   } else {
     sound.pause();
     target.classList.add(className);
+    isPlaying = false;
+    clearInterval(sceneInterval);
   }
+}
+
+function advance() {
+  curRouteIndex++;
+
+  if (curRouteIndex > playableRoutes.length - 1) {
+    curRouteIndex = 0;
+  }
+
+  transitionTo(playableRoutes[curRouteIndex]);
 }
 
 function makeDistortionCurve(amount) {
@@ -31,8 +74,8 @@ function makeDistortionCurve(amount) {
   return curve;
 };
 
-function playSound() {
-  var ctx = new webkitAudioContext(),
+function playSound(audio) {
+  var ctx = new AudioContext(),
     distortion = ctx.createWaveShaper(),
     gainNode = ctx.createGain(),
     biquadFilter = ctx.createBiquadFilter();
@@ -44,7 +87,6 @@ function playSound() {
   biquadFilter.type = 'lowpass';
   biquadFilter.frequency.value = 15000;
 
-  var audio = document.querySelector('.ident__audio');
   audio.autoplay = true;
   audio.loop = true;
   audio.playbackRate = 0.5;
@@ -64,16 +106,56 @@ function bodyOnKeyup(e) {
   }
 }
 
-function init() {
-  var bod = document.getElementsByTagName('body')[0],
-    audio = window.location.search.indexOf('audio=false');
+function render(state) {
+  var el = document.getElementById(state.template),
+    clone = document.importNode(el.content, true),
+    canvas = document.getElementById('canvas');
 
-  if (audio < 0) {
-    playSound();
+  clearInterval(sceneInterval);
+
+  if (isPlaying) {
+    sceneInterval = setInterval(advance, sceneQueue);
   }
 
-  bod.addEventListener('keyup', bodyOnKeyup, false);
-  bod.addEventListener('click', makeItStop, false);
+  if (canvas.childNodes.length) {
+    canvas.removeChild(canvas.querySelector('.ident'));
+  }
+
+  canvas.appendChild(clone);
+  playSound(canvas.querySelector('.ident__audio'));
+}
+
+function transitionTo(routeName, state) {
+  var route = routeName;
+
+  if (routeName === 'random') {
+    curRouteIndex = Math.floor(Math.random() * playableRoutes.length);
+    route = playableRoutes[curRouteIndex];
+  } else {
+    curRouteIndex = playableRoutes.indexOf(route);
+
+    if (curRouteIndex > -1) {
+      route = playableRoutes[curRouteIndex];
+    } else {
+      route = notFoundRoute;
+    }
+  }
+
+  window.history.pushState({}, '', route);
+  render(routes[route](state));
+}
+
+function init() {
+  var body = document.getElementsByTagName('body')[0],
+    audio = window.location.search.indexOf('audio=false'),
+    routeName = window.location.pathname.split(namespace)[1].replace('/', '') || 'random';
+
+  body.addEventListener('keyup', bodyOnKeyup, false);
+  body.addEventListener('click', makeItStop, false);
+
+  transitionTo(routeName, {
+    audio: audio
+  });
 }
 
 window.addEventListener('load', init, false);
