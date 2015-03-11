@@ -144,6 +144,11 @@ normal | multiply | screen | overlay | darken | lighten | color-dodge
     background: transparent url("../images/find-msg-01.png") no-repeat 90% 5%;
     background-size: 40%; }
 
+.animated.paused,
 .paused .animated {
   -webkit-animation-play-state: paused;
   animation-play-state: paused; }
+
+.hidden {
+  display: none;
+  visibility: hidden; }

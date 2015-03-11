@@ -23,9 +23,13 @@ body {
 @import "armed";
 @import "find";
 
-.paused {
-  .animated {
-    -webkit-animation-play-state: paused;
-    animation-play-state: paused;
-  }
+.animated.paused,
+.paused .animated {
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
 }

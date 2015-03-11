@@ -8,32 +8,24 @@
   <link rel="stylesheet" href="css/theymademedoit.css">
 </head>
   <body>
-    <div id="canvas"></div>
+    <div id="armed" class="ident ident--armed animated paused hidden">
+      <div class="ident__background animated"></div>
+      <div class="ident__background__extra"></div>
+      <div class="ident__subject animated"></div>
+      <div class="ident__msg animated"></div>
+      <audio class="ident__audio" src="audio/roll-me.ogg"></audio>
+    </div>
 
-    <template id="ident--armed">
-      <div class="ident ident--armed animated">
-        <div class="ident__background animated"></div>
-        <div class="ident__background__extra"></div>
-        <div class="ident__subject animated"></div>
-        <div class="ident__msg animated"></div>
-        <audio class="ident__audio" src="audio/roll-me.ogg"></audio>
-      </div>
-    </template>
+    <div id="find" class="ident ident--find animated paused hidden">
+      <div class="ident__background animated"></div>
+      <div class="ident__subject animated"></div>
+      <div class="ident__msg animated"></div>
+      <audio class="ident__audio" src="audio/runaway.ogg"></audio>
+    </div>
 
-    <template id="ident--find">
-      <div class="ident ident--find animated">
-        <div class="ident__background animated"></div>
-        <div class="ident__subject animated"></div>
-        <div class="ident__msg animated"></div>
-        <audio class="ident__audio" src="audio/runaway.ogg"></audio>
-      </div>
-    </template>
-
-    <template id="ident--404">
-      <div class="ident ident--404 animated">
-        <h1>Four Hundred Four</h1>
-      </div>
-    </template>
+    <div id="404" class="ident ident--404 animated paused hidden">
+      <h1>Four Hundred Four</h1>
+    </div>
 
     <script src="js/partyoveroopsoutoftime.js"></script>
   </body>

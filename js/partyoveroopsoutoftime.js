@@ -3,22 +3,31 @@ var namespace = 'overawe/',
   sceneInterval = null,
   sceneQueue = 15000,
   curRouteIndex = 0,
-  notFoundRoute = '404';
+  notFoundRoute = '404',
+  canvas = document.getElementById('canvas'),
+  store = {};
 
 var routes = {
   'armed': function(initialState) {
     return {
-      template: 'ident--armed'
+      id: 'ident--armed',
+      soundOpts: {
+        curve: 20000,
+        oversample: '2x',
+        filterType: 'highpass',
+        frequency: 1000,
+        playbackRate: 2.5
+      }
     };
   },
   'find': function(initialState) {
     return {
-      template: 'ident--find'
+      id: 'ident--find'
     };
   },
   '404': function(initialState) {
     return {
-      template: 'ident--404'
+      id: 'ident--404'
     };
   }
 };
@@ -27,14 +36,10 @@ var playableRoutes = Object.keys(routes).filter(function(key) {
   return key !== notFoundRoute;
 });
 
-var sound = {
-  play: function(){},
-  pause: function(){}
-};
-
 function makeItStop() {
   var target = document.getElementsByTagName('body')[0],
-    className = 'paused';
+    className = 'paused',
+    sound = store[playableRoutes[curRouteIndex]].sound;
 
   if (target.classList.contains(className)) {
     sound.play();
@@ -74,29 +79,29 @@ function makeDistortionCurve(amount) {
   return curve;
 };
 
-function playSound(audio) {
+function createSound(audio, opts) {
   var ctx = new AudioContext(),
     distortion = ctx.createWaveShaper(),
     gainNode = ctx.createGain(),
     biquadFilter = ctx.createBiquadFilter();
 
-  distortion.curve = makeDistortionCurve(5000);
+  distortion.curve = makeDistortionCurve(opts.curve || 5000);
   // This can only be 'none', '2x', '4x'
-  distortion.oversample = '4x';
+  distortion.oversample = opts.oversample || '4x';
 
-  biquadFilter.type = 'lowpass';
-  biquadFilter.frequency.value = 15000;
+  biquadFilter.type = opts.filterType || 'lowpass';
+  biquadFilter.frequency.value = opts.frequency || 15000;
 
-  audio.autoplay = true;
   audio.loop = true;
-  audio.playbackRate = 0.5;
-  sound = audio;
+  audio.playbackRate = opts.playbackRate || 0.5;
 
   var src = ctx.createMediaElementSource(audio);
   src.connect(biquadFilter);
   biquadFilter.connect(gainNode);
   gainNode.connect(distortion);
   distortion.connect(ctx.destination);
+
+  return audio;
 }
 
 function bodyOnKeyup(e) {
@@ -107,22 +112,22 @@ function bodyOnKeyup(e) {
 }
 
 function render(state) {
-  var el = document.getElementById(state.template),
-    clone = document.importNode(el.content, true),
-    canvas = document.getElementById('canvas');
-
   clearInterval(sceneInterval);
+
+  [].forEach.call(document.querySelectorAll('.ident:not(.hidden)'), function(activeEl) {
+    var id = activeEl.getAttribute('id');
+    store[id].el.classList.add('hidden');
+    store[id].el.classList.add('paused');
+    store[id].sound.pause();
+  });
+
+  state.el.classList.remove('hidden');
+  state.el.classList.remove('paused');
+  state.sound.play();
 
   if (isPlaying) {
     sceneInterval = setInterval(advance, sceneQueue);
   }
-
-  if (canvas.childNodes.length) {
-    canvas.removeChild(canvas.querySelector('.ident'));
-  }
-
-  canvas.appendChild(clone);
-  playSound(canvas.querySelector('.ident__audio'));
 }
 
 function transitionTo(routeName, state) {
@@ -142,13 +147,25 @@ function transitionTo(routeName, state) {
   }
 
   window.history.pushState({}, '', route);
-  render(routes[route](state));
+  render(store[route]);
+}
+
+function populateStore() {
+  playableRoutes.forEach(function(key) {
+    var curStore = routes[key]();
+    curStore.el = document.getElementById(key);
+    curStore.sound = createSound(curStore.el.querySelector('.ident__audio'),
+      curStore.soundOpts || {});
+    store[key] = curStore;
+  });
 }
 
 function init() {
   var body = document.getElementsByTagName('body')[0],
     audio = window.location.search.indexOf('audio=false'),
     routeName = window.location.pathname.split(namespace)[1].replace('/', '') || 'random';
+
+  populateStore();
 
   body.addEventListener('keyup', bodyOnKeyup, false);
   body.addEventListener('click', makeItStop, false);
