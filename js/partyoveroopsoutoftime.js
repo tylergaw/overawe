@@ -11,12 +11,13 @@ var routes = {
   'armed': function(initialState) {
     return {
       id: 'ident--armed',
+      duration: 5000,
       soundOpts: {
-        curve: 20000,
-        oversample: '2x',
+        curve: 50000,
+        oversample: '3x',
         filterType: 'highpass',
-        frequency: 1000,
-        playbackRate: 2.5
+        frequency: 500,
+        playbackRate: 2.2
       }
     };
   },
@@ -126,7 +127,7 @@ function render(state) {
   state.sound.play();
 
   if (isPlaying) {
-    sceneInterval = setInterval(advance, sceneQueue);
+    sceneInterval = setInterval(advance, state.duration || sceneQueue);
   }
 }
 
