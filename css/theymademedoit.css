@@ -152,3 +152,16 @@ normal | multiply | screen | overlay | darken | lighten | color-dodge
 .hidden {
   display: none;
   visibility: hidden; }
+
+#watermark {
+  bottom: 0.5em;
+  display: block;
+  left: 1em;
+  opacity: 0.9;
+  position: absolute;
+  width: 80px;
+  z-index: 99; }
+  #watermark:hover, #watermark:focus {
+    opacity: 1; }
+  #watermark path {
+    fill: #fff; }
