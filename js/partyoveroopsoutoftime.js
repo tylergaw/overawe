@@ -32,10 +32,10 @@ var routes = {
     return {
       id: 'ident--win',
       soundOpts: {
-        curve: 9000,
+        curve: 5000,
         oversample: '4x',
-        filterType: 'lowpass',
-        frequency: 500,
+        filterType: 'highpass',
+        frequency: 100,
         playbackRate: 0.9
       }
     };
@@ -204,7 +204,10 @@ function init() {
     params = paramsStrToObj(window.location.search),
     routeName = window.location.pathname.split(namespace)[1].replace('/', '') || 'random';
 
-  playAudio = (params.audio === 'true');
+  if (params.audio !== undefined) {
+    playAudio = (params.audio === 'true');
+  }
+  
   isSticky = (params.sticky === 'true');
 
   populateStore();
