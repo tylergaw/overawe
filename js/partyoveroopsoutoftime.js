@@ -17,8 +17,8 @@ var routes = {
       soundOpts: {
         curve: 50000,
         oversample: '3x',
-        filterType: 'highpass',
-        frequency: 500,
+        filterType: 'lowpass',
+        frequency: 900,
         playbackRate: 2.2
       }
     };
