@@ -22,11 +22,6 @@ body {
     transform: none; }
   100% {
     transform: skewX(50deg) skewY(30deg) rotate(-25deg) scale(0.6); } }
-/*
-normal | multiply | screen | overlay | darken | lighten | color-dodge
-| color-burn | hard-light | soft-light | difference | exclusion | hue
-| saturation | color | luminosity
-*/
 @-webkit-keyframes breathe {
   50%, 52% {
     background-color: orange;
@@ -143,6 +138,28 @@ normal | multiply | screen | overlay | darken | lighten | color-dodge
     -webkit-animation: fly 10s infinite linear;
     background: transparent url("../images/find-msg-01.png") no-repeat 90% 5%;
     background-size: 40%; }
+
+.ident--win .ident__background {
+  background-image: url("../images/win-bg-01.png"), url("../images/win-bg-02.gif");
+  background-size: auto, 40%;
+  background-repeat: repeat;
+  background-position: center center;
+  background-blend-mode: overlay, normal;
+  opacity: 0.7; }
+.ident--win .ident__background__extra {
+  background-color: blue; }
+.ident--win .ident__subject {
+  background: transparent url("../images/win-subject-01.png") no-repeat 105% bottom;
+  background-size: 50%;
+  height: 100%;
+  position: absolute;
+  width: 100%; }
+.ident--win .ident__msg {
+  background: transparent url("../images/win-msg-01.png") no-repeat 8% 90%;
+  background-size: 50%; }
+
+.paused .ident--win .ident__background {
+  background-image: url("../images/win-bg-01.png"), url("../images/win-bg-paused.jpg"); }
 
 .animated.paused,
 .paused .animated {

@@ -28,6 +28,18 @@ var routes = {
       id: 'ident--find'
     };
   },
+  'win': function(initialState) {
+    return {
+      id: 'ident--win',
+      soundOpts: {
+        curve: 9000,
+        oversample: '4x',
+        filterType: 'lowpass',
+        frequency: 500,
+        playbackRate: 0.9
+      }
+    };
+  },
   '404': function(initialState) {
     return {
       id: 'ident--404'
