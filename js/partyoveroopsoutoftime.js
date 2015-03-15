@@ -199,23 +199,31 @@ function paramsStrToObj(str) {
   return obj;
 }
 
+function getRouteName() {
+  return window.location.pathname.split(namespace)[1].replace('/', '') || 'random';
+}
+
+function handlePopState(e) {
+  transitionTo(getRouteName());
+}
+
 function init() {
   var body = document.getElementsByTagName('body')[0],
-    params = paramsStrToObj(window.location.search),
-    routeName = window.location.pathname.split(namespace)[1].replace('/', '') || 'random';
+    params = paramsStrToObj(window.location.search);
 
   if (params.audio !== undefined) {
     playAudio = (params.audio === 'true');
   }
-  
+
   isSticky = (params.sticky === 'true');
 
   populateStore();
 
   body.addEventListener('keyup', bodyOnKeyup, false);
   body.addEventListener('click', makeItStop, false);
+  window.onpopstate = handlePopState;
 
-  transitionTo(routeName);
+  transitionTo(getRouteName());
 }
 
 window.addEventListener('load', init, false);
