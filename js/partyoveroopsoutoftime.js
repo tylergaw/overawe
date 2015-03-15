@@ -1,5 +1,7 @@
 var namespace = 'overawe/',
   isPlaying = true,
+  playAudio = true,
+  isSticky = false,
   sceneInterval = null,
   sceneQueue = 15000,
   curRouteIndex = 0,
@@ -43,10 +45,18 @@ function makeItStop() {
     sound = store[playableRoutes[curRouteIndex]].sound;
 
   if (target.classList.contains(className)) {
-    sound.play();
+
+    if (playAudio) {
+      sound.play();
+    }
+
     target.classList.remove(className);
     isPlaying = true;
-    sceneInterval = setInterval(advance, sceneQueue);
+
+    if (!isSticky) {
+      sceneInterval = setInterval(advance, sceneQueue);
+    }
+
   } else {
     sound.pause();
     target.classList.add(className);
@@ -124,14 +134,17 @@ function render(state) {
 
   state.el.classList.remove('hidden');
   state.el.classList.remove('paused');
-  state.sound.play();
 
-  if (isPlaying) {
+  if (playAudio) {
+    state.sound.play();
+  }
+
+  if (isPlaying && !isSticky) {
     sceneInterval = setInterval(advance, state.duration || sceneQueue);
   }
 }
 
-function transitionTo(routeName, state) {
+function transitionTo(routeName) {
   var route = routeName;
 
   if (routeName === 'random') {
@@ -147,7 +160,7 @@ function transitionTo(routeName, state) {
     }
   }
 
-  window.history.pushState({}, '', route);
+  window.history.pushState({}, '', route + window.location.search);
   render(store[route]);
 }
 
@@ -157,23 +170,37 @@ function populateStore() {
     curStore.el = document.getElementById(key);
     curStore.sound = createSound(curStore.el.querySelector('.ident__audio'),
       curStore.soundOpts || {});
+
     store[key] = curStore;
   });
 }
 
+function paramsStrToObj(str) {
+  var obj = {},
+    query = str.substr(1);
+
+  query.split('&').forEach(function(part) {
+    var item = part.split('=');
+    obj[item[0]] = decodeURIComponent(item[1]);
+  });
+
+  return obj;
+}
+
 function init() {
   var body = document.getElementsByTagName('body')[0],
-    audio = window.location.search.indexOf('audio=false'),
+    params = paramsStrToObj(window.location.search),
     routeName = window.location.pathname.split(namespace)[1].replace('/', '') || 'random';
+
+  playAudio = (params.audio === 'true');
+  isSticky = (params.sticky === 'true');
 
   populateStore();
 
   body.addEventListener('keyup', bodyOnKeyup, false);
   body.addEventListener('click', makeItStop, false);
 
-  transitionTo(routeName, {
-    audio: audio
-  });
+  transitionTo(routeName);
 }
 
 window.addEventListener('load', init, false);
