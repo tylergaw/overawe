@@ -1,0 +1,58 @@
+@include keyframes(freebird) {
+  0%, 49.9999%, 56% {
+    background-color: transparent;
+    background-position: center center;
+    background-blend-mode: normal;
+    @include filter(invert(0) grayscale(0));
+  }
+
+  50% {
+    @include filter(invert(100%) grayscale(100%));
+    background-color: #00d8ec;
+
+    background-position:
+      center center,
+      95% 110%,
+      5% 15%,
+      15% 95%,
+      0% 10%,
+      95% 93%,
+      50% -40%;
+    background-blend-mode:
+      color,
+      overlay,
+      luminosity,
+      soft-light,
+      hard-light,
+      saturation,
+      darken;
+  }
+}
+
+.ident--view {
+  background-color: #4a89ec;
+
+  // normal | multiply | screen | overlay | darken | lighten | color-dodge
+  // | color-burn | hard-light | soft-light | difference | exclusion | hue
+  // | saturation | color | luminosity
+
+  .ident__subject {
+    @include animation(freebird 15s infinite linear);
+
+    background-image:
+      url("../images/view-subject-01.png"),
+      url("../images/view-subject-01.png"),
+      url("../images/view-subject-01.png"),
+      url("../images/view-subject-01.png"),
+      url("../images/view-subject-01.png"),
+      url("../images/view-subject-01.png"),
+      url("../images/view-subject-01.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-blend-mode: normal;
+    background-size: 50%;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+}

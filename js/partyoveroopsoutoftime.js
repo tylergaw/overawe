@@ -3,7 +3,7 @@ var namespace = 'overawe/',
   playAudio = true,
   isSticky = false,
   sceneInterval = null,
-  sceneDuration = 15000,
+  sceneDuration = 25000,
   curRouteIndex = 0,
   notFoundRoute = '404',
   canvas = document.getElementById('canvas'),
@@ -13,13 +13,13 @@ var routes = {
   'armed': function(initialState) {
     return {
       id: 'ident--armed',
-      duration: 7000,
+      duration: 15000,
       soundOpts: {
         curve: 50000,
         oversample: '3x',
         filterType: 'lowpass',
         frequency: 900,
-        playbackRate: 2.2
+        playbackRate: 1.5
       }
     };
   },
@@ -36,6 +36,18 @@ var routes = {
         oversample: '4x',
         filterType: 'highpass',
         frequency: 100,
+        playbackRate: 0.9
+      }
+    };
+  },
+  'view': function(initialState) {
+    return {
+      id: 'ident--view',
+      soundOpts: {
+        curve: 1200,
+        oversample: '3x',
+        filterType: 'highpass',
+        frequency: 1000,
         playbackRate: 0.9
       }
     };
@@ -68,12 +80,14 @@ function makeItStop() {
     if (!isSticky) {
       sceneInterval = setInterval(advance, sceneDuration);
     }
+    document.title = '▶︎ ' + document.title.split(' ')[1];
 
   } else {
     sound.pause();
     target.classList.add(className);
     isPlaying = false;
     clearInterval(sceneInterval);
+    document.title = '❚❚ ' + document.title.split(' ')[1];
   }
 }
 
@@ -200,7 +214,7 @@ function paramsStrToObj(str) {
 }
 
 function getRouteName() {
-  return window.location.pathname.split(namespace)[1].replace('/', '') || 'random';
+  return window.location.pathname.split(namespace)[1].replace('/', '') || 'armed';
 }
 
 function handlePopState(e) {
