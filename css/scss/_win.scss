@@ -1,11 +1,43 @@
-.ident--win {
-  // -webkit-animation: gone 8s infinite linear;
-  // animation: gone 8s infinite linear;
+@-webkit-keyframes arise {
+  0% {
+    transform: translate3d(0, 200%, 0);
+  }
 
+  50%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@-webkit-keyframes shift {
+  0%, 92% {
+    background-position: 105% bottom;
+  }
+
+  100% {
+    background-position: -10% bottom;
+  }
+}
+
+@-webkit-keyframes swim {
+  0%, 25% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -2px, 0);
+  }
+
+  75% {
+    transform: translate3d(1px, -2px, 0);
+  }
+
+  100% {
+    transform: translate3d(2px, 0, 0);
+  }
+}
+
+.ident--win {
   .ident__background {
-    // -webkit-animation: breathe 5s infinite linear;
-    // animation: breathe 5s infinite linear;
-    // background-color: red;
     background-image: url("../images/win-bg-01.png"), url("../images/win-bg-02.gif");
     background-size: auto, 40%;
     background-repeat: repeat;
@@ -14,16 +46,10 @@
     opacity: 0.7;
   }
 
-  .ident__background__extra {
-    background-color: blue;
-    // background: transparent url("../images/armed-bg-extra-01.png") repeat-x left top;
-  }
-
   .ident__subject {
-    // -webkit-animation:
-    //   enter 8s infinite linear alternate,
-    //   closeup 6s infinite linear,
-    //   tweak 6s infinite linear;
+    -webkit-animation:
+      arise 15s infinite linear alternate,
+      shift 0.4s infinite alternate;
     background: transparent url("../images/win-subject-01.png") no-repeat 105% bottom;
     background-size: 50%;
     height: 100%;
@@ -32,7 +58,7 @@
   }
 
   .ident__msg {
-    // -webkit-animation: fidgit 6s infinite linear;
+    -webkit-animation: swim 0.1s infinite linear;
     background: transparent url("../images/win-msg-01.png") no-repeat 8% 90%;
     background-size: 50%;
   }

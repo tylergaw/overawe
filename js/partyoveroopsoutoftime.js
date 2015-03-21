@@ -3,7 +3,7 @@ var namespace = 'overawe/',
   playAudio = true,
   isSticky = false,
   sceneInterval = null,
-  sceneQueue = 15000,
+  sceneDuration = 15000,
   curRouteIndex = 0,
   notFoundRoute = '404',
   canvas = document.getElementById('canvas'),
@@ -13,7 +13,7 @@ var routes = {
   'armed': function(initialState) {
     return {
       id: 'ident--armed',
-      duration: 5000,
+      duration: 7000,
       soundOpts: {
         curve: 50000,
         oversample: '3x',
@@ -66,7 +66,7 @@ function makeItStop() {
     isPlaying = true;
 
     if (!isSticky) {
-      sceneInterval = setInterval(advance, sceneQueue);
+      sceneInterval = setInterval(advance, sceneDuration);
     }
 
   } else {
@@ -152,7 +152,7 @@ function render(state) {
   }
 
   if (isPlaying && !isSticky) {
-    sceneInterval = setInterval(advance, state.duration || sceneQueue);
+    sceneInterval = setInterval(advance, state.duration || sceneDuration);
   }
 }
 
