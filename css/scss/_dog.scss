@@ -1,6 +1,107 @@
+@include keyframes(dance) {
+  0% {
+    top: -2px;
+  }
+
+  100% {
+    top: 0;
+  }
+}
+
+@include keyframes(pulse) {
+  0% {
+    -webkit-filter: brightness(3);
+  }
+
+  20% {
+    -webkit-filter: brightness(1);
+  }
+}
+
+@include keyframes(strobe) {
+  0%, 9%, 15%, 100% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+}
+
+@include keyframes(tellit) {
+  0%, 5% {
+    transform: translate3d(0, -100%, 0);
+  }
+
+  20%, 100% {
+    transform: translate3d(0, -5%, 0);
+  }
+}
+
+@include keyframes(pizzapizza) {
+  0%, 29% {
+    transform: translate3d(20%, -100%, 0);
+  }
+
+  30%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@include keyframes(bowwowow) {
+  0%, 26% {
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  27%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 .ident--dog {
+  @include animation(pulse 0.3s infinite);
+  @include animation-delay(8s);
   background: #e1b38f url("../images/dog-bg-01.jpg") no-repeat center bottom;
   background-size: 100%;
+
+  .ident__background {
+    @include animation(strobe 0.3s infinite);
+    @include animation-delay(8s);
+    background: linear-gradient(
+      25deg,
+      rgba(0,0,0,0.2) 0%,
+      rgba(0,0,0,0.2) 5%,
+      rgba(255,0,132,1) 8%,
+      rgba(255,0,132,1) 9%,
+      rgba(0,0,0,0.2) 10%,
+      rgba(0,0,0,0.2) 40%,
+      rgba(255,0,132,1) 41%,
+      rgba(255,0,132,1) 42%,
+      rgba(0,0,0,0.2) 43%,
+      rgba(0,0,0,0.2) 67%,
+      rgba(255,0,132,1) 68%,
+      rgba(255,0,132,1) 69%,
+      rgba(0,0,0,0.2) 70%,
+      rgba(0,0,0,0.2) 100%),
+
+      linear-gradient(
+        50deg,
+        rgba(0,0,0,0.2) 0%,
+        rgba(0,0,0,0.2) 5%,
+        rgba(#00d8ec, 1) 8%,
+        rgba(#00d8ec, 1) 9%,
+        rgba(0,0,0,0.2) 10%,
+        rgba(0,0,0,0.2) 40%,
+        rgba(#77ec00, 1) 41%,
+        rgba(#77ec00,1) 42%,
+        rgba(0,0,0,0.2) 43%,
+        rgba(0,0,0,0.2) 67%,
+        rgba(#ec1500,1) 68%,
+        rgba(#ec1500,1) 69%,
+        rgba(0,0,0,0.2) 70%,
+        rgba(0,0,0,0.2) 100%);
+    opacity: 0.5;
+  }
 
   .ident__subject {
     height: 100%;
@@ -20,6 +121,7 @@
   }
 
   .ident__subject--pizza {
+    @include animation(pizzapizza 25s infinite linear);
     background-image: url("../images/dog-subject-02.png");
   }
 
@@ -31,21 +133,27 @@
   }
 
   .ident__subject--jerry {
+    @include animation(bowwowow 25s infinite linear, dance 0.12s infinite alternate);
+    @include animation-delay(0.5s);
     background-image: url("../images/dog-subject-03.png");
     background-position: -2% 92%;
   }
 
   .ident__subject--bonnie {
+    @include animation(bowwowow 25s infinite linear, dance 0.2s infinite alternate);
+    @include animation-delay(0.15s);
     background-image: url("../images/dog-subject-04.png");
     background-position: 30% 92%;
   }
 
   .ident__subject--fletch {
+    @include animation(bowwowow 25s infinite linear, dance 0.1s infinite alternate);
     background-image: url("../images/dog-subject-05.png");
     background-position: 60% 92%;
   }
 
   .ident__msg {
+    @include animation(tellit 25s infinite linear);
     background: transparent url("../images/dog-msg-01.png") no-repeat left top;
     background-size: percent(632px, 1280px);
   }
