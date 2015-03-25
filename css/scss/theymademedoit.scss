@@ -1,5 +1,9 @@
 @import "nonsense";
 
+@function percent($target, $context) {
+  @return ($target / $context) * 100%;
+}
+
 html,
 body {
   background: #fff url("../images/body-bg.png") repeat left top;
@@ -26,6 +30,7 @@ body {
 @import "find";
 @import "win";
 @import "view";
+@import "dog";
 
 .animated.paused,
 .paused .animated {

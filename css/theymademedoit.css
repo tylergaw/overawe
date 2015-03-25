@@ -220,6 +220,40 @@ body {
     position: absolute;
     width: 100%; }
 
+.ident--dog {
+  background: #e1b38f url("../images/dog-bg-01.jpg") no-repeat center bottom;
+  background-size: 100%; }
+  .ident--dog .ident__subject {
+    height: 100%;
+    position: absolute;
+    width: 100%; }
+  .ident--dog .ident__subject--table,
+  .ident--dog .ident__subject--pizza {
+    background-repeat: no-repeat;
+    background-position: 98% 99%;
+    background-size: 31.95313%; }
+  .ident--dog .ident__subject--table {
+    background-image: url("../images/dog-subject-01.png"); }
+  .ident--dog .ident__subject--pizza {
+    background-image: url("../images/dog-subject-02.png"); }
+  .ident--dog .ident__subject--jerry,
+  .ident--dog .ident__subject--bonnie,
+  .ident--dog .ident__subject--fletch {
+    background-repeat: no-repeat;
+    background-size: 28.35937%; }
+  .ident--dog .ident__subject--jerry {
+    background-image: url("../images/dog-subject-03.png");
+    background-position: -2% 92%; }
+  .ident--dog .ident__subject--bonnie {
+    background-image: url("../images/dog-subject-04.png");
+    background-position: 30% 92%; }
+  .ident--dog .ident__subject--fletch {
+    background-image: url("../images/dog-subject-05.png");
+    background-position: 60% 92%; }
+  .ident--dog .ident__msg {
+    background: transparent url("../images/dog-msg-01.png") no-repeat left top;
+    background-size: 49.375%; }
+
 .animated.paused,
 .paused .animated {
   -webkit-animation-play-state: paused;

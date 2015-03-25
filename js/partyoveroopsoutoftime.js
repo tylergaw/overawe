@@ -52,6 +52,11 @@ var routes = {
       }
     };
   },
+  'dog': function(initialState) {
+    return {
+      id: 'ident--dog'
+    };
+  },
   '404': function(initialState) {
     return {
       id: 'ident--404'
