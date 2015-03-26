@@ -222,21 +222,31 @@ body {
 
 @-webkit-keyframes dance {
   0% {
-    top: -2px; }
+    top: -8px;
+    left: -4px; }
+  50% {
+    top: 4px;
+    right: 8px; }
   100% {
-    top: 0; } }
+    top: 0;
+    right: 0; } }
 @keyframes dance {
   0% {
-    top: -2px; }
+    top: -8px;
+    left: -4px; }
+  50% {
+    top: 4px;
+    right: 8px; }
   100% {
-    top: 0; } }
+    top: 0;
+    right: 0; } }
 @-webkit-keyframes pulse {
-  0%, 30.9999%, 32%, 34%, 36%, 38%, 40%, 42%, 44%, 46%, 48%, 50%, 52%, 54%, 56%,
+  0%, 34.9999%, 36%, 38%, 40%, 42%, 44%, 46%, 48%, 50%, 52%, 54%, 56%,
   58%, 60%, 62%, 64%, 66%, 68%, 70%, 72%, 74%, 76%, 78%, 80%, 82%, 84%, 86%, 88%,
   90%, 92%, 94%, 96%, 98%, 100% {
     -webkit-filter: brightness(1);
     filter: brightness(1); }
-  31%, 33%, 35%, 37%, 39%, 41%, 43%, 45%, 47%, 49%, 51%, 53%, 55%, 57%, 59% {
+  35%, 37%, 39%, 41%, 43%, 45%, 47%, 49%, 51%, 53%, 55%, 57%, 59% {
     -webkit-filter: brightness(3);
     filter: brightness(3); }
   61%, 63%, 65%, 67%, 69%, 71%, 73%, 75%, 77%, 79%, 81%, 83%, 85%, 87%, 89% {
@@ -246,12 +256,12 @@ body {
     -webkit-filter: brightness(4);
     filter: brightness(4); } }
 @keyframes pulse {
-  0%, 30.9999%, 32%, 34%, 36%, 38%, 40%, 42%, 44%, 46%, 48%, 50%, 52%, 54%, 56%,
+  0%, 34.9999%, 36%, 38%, 40%, 42%, 44%, 46%, 48%, 50%, 52%, 54%, 56%,
   58%, 60%, 62%, 64%, 66%, 68%, 70%, 72%, 74%, 76%, 78%, 80%, 82%, 84%, 86%, 88%,
   90%, 92%, 94%, 96%, 98%, 100% {
     -webkit-filter: brightness(1);
     filter: brightness(1); }
-  31%, 33%, 35%, 37%, 39%, 41%, 43%, 45%, 47%, 49%, 51%, 53%, 55%, 57%, 59% {
+  35%, 37%, 39%, 41%, 43%, 45%, 47%, 49%, 51%, 53%, 55%, 57%, 59% {
     -webkit-filter: brightness(3);
     filter: brightness(3); }
   61%, 63%, 65%, 67%, 69%, 71%, 73%, 75%, 77%, 79%, 81%, 83%, 85%, 87%, 89% {
@@ -271,76 +281,76 @@ body {
   10% {
     opacity: 1; } }
 @-webkit-keyframes fakedelay {
-  0%, 30.9999% {
+  0%, 34.9999% {
     transform: scale(0); }
-  31%, 100% {
+  35%, 100% {
     transform: scale(1); } }
 @keyframes fakedelay {
-  0%, 30.9999% {
+  0%, 34.9999% {
     transform: scale(0); }
-  31%, 100% {
+  35%, 100% {
     transform: scale(1); } }
 @-webkit-keyframes curtain {
   0%, 2% {
     opacity: 1; }
-  5%, 30.9999% {
+  5%, 34.9999% {
     opacity: 0; }
-  31%, 90% {
+  35%, 90% {
     opacity: 0.3; }
   92%, 100% {
     opacity: 1; } }
 @keyframes curtain {
   0%, 2% {
     opacity: 1; }
-  5%, 30.9999% {
+  5%, 34.9999% {
     opacity: 0; }
-  31%, 90% {
+  35%, 90% {
     opacity: 0.3; }
   92%, 100% {
     opacity: 1; } }
 @-webkit-keyframes tellit {
-  0%, 5% {
+  0%, 1% {
     transform: translate3d(0, -100%, 0); }
-  20%, 100% {
-    transform: translate3d(0, -5%, 0); } }
+  10%, 100% {
+    transform: translate3d(0, 0, 0); } }
 @keyframes tellit {
-  0%, 5% {
+  0%, 1% {
     transform: translate3d(0, -100%, 0); }
-  20%, 100% {
-    transform: translate3d(0, -5%, 0); } }
+  10%, 100% {
+    transform: translate3d(0, 0, 0); } }
 @-webkit-keyframes pizzapizza {
-  0%, 29% {
+  0%, 33% {
     transform: translate3d(20%, -100%, 0); }
-  30%, 100% {
+  34%, 100% {
     transform: translate3d(0, 0, 0); } }
 @keyframes pizzapizza {
-  0%, 29% {
+  0%, 33% {
     transform: translate3d(20%, -100%, 0); }
-  30%, 100% {
+  34%, 100% {
     transform: translate3d(0, 0, 0); } }
 @-webkit-keyframes bowwowow {
-  0%, 26% {
+  0%, 10% {
     transform: translate3d(-100%, 0, 0); }
-  27%, 100% {
+  20%, 100% {
     transform: translate3d(0, 0, 0); } }
 @keyframes bowwowow {
-  0%, 26% {
+  0%, 10% {
     transform: translate3d(-100%, 0, 0); }
-  27%, 100% {
+  20%, 100% {
     transform: translate3d(0, 0, 0); } }
 .ident--dog {
-  -webkit-animation: pulse 25s infinite;
-  animation: pulse 25s infinite;
+  -webkit-animation: pulse 30s infinite;
+  animation: pulse 30s infinite;
   background: #e1b38f url("../images/dog-bg-01.jpg") no-repeat center bottom;
   background-size: 100%; }
   .ident--dog .ident__background {
-    -webkit-animation: lazers 0.3s infinite, fakedelay 25s infinite;
-    animation: lazers 0.3s infinite, fakedelay 25s infinite;
+    -webkit-animation: lazers 0.3s infinite, fakedelay 30s infinite;
+    animation: lazers 0.3s infinite, fakedelay 30s infinite;
     background: linear-gradient(25deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 15%, rgba(255, 0, 132, 0.8) 15%, rgba(255, 0, 132, 0.8) 16%, rgba(0, 0, 0, 0.2) 16%, rgba(0, 0, 0, 0.2) 40%, rgba(0, 216, 236, 0.8) 40%, rgba(0, 216, 236, 0.8) 41%, rgba(0, 0, 0, 0.2) 41%, rgba(0, 0, 0, 0.2) 67%, rgba(255, 0, 132, 0.7) 67%, rgba(255, 0, 132, 0.7) 68%, rgba(0, 0, 0, 0.2) 68%, rgba(0, 0, 0, 0.4) 100%), linear-gradient(50deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 10%, #00d8ec 10%, #00d8ec 11%, rgba(0, 0, 0, 0.2) 11%, rgba(0, 0, 0, 0.2) 40%, #77ec00 40%, #77ec00 41%, rgba(0, 0, 0, 0.2) 41%, rgba(0, 0, 0, 0.2) 67%, #ec1500 67%, #ec1500 68%, rgba(0, 0, 0, 0.2) 68%, rgba(0, 0, 0, 0.2) 100%);
     opacity: 0.4; }
   .ident--dog .ident__background__extra {
-    -webkit-animation: curtain 25s infinite;
-    animation: curtain 25s infinite;
+    -webkit-animation: curtain 30s infinite;
+    animation: curtain 30s infinite;
     background-color: #000; }
   .ident--dog .ident__subject {
     height: 100%;
@@ -354,8 +364,8 @@ body {
   .ident--dog .ident__subject--table {
     background-image: url("../images/dog-subject-01.png"); }
   .ident--dog .ident__subject--pizza {
-    -webkit-animation: pizzapizza 25s infinite linear;
-    animation: pizzapizza 25s infinite linear;
+    -webkit-animation: pizzapizza 30s infinite linear;
+    animation: pizzapizza 30s infinite linear;
     background-image: url("../images/dog-subject-02.png"); }
   .ident--dog .ident__subject--jerry,
   .ident--dog .ident__subject--bonnie,
@@ -363,27 +373,29 @@ body {
     background-repeat: no-repeat;
     background-size: 28.35937%; }
   .ident--dog .ident__subject--jerry {
-    -webkit-animation: bowwowow 25s infinite linear, dance 0.12s infinite alternate;
-    animation: bowwowow 25s infinite linear, dance 0.12s infinite alternate;
-    -webkit-animation-delay: 0.5s;
-    animation-delay: 0.5s;
+    -webkit-animation: bowwowow 30s infinite linear, dance 0.12s infinite alternate;
+    animation: bowwowow 30s infinite linear, dance 0.12s infinite alternate;
+    -webkit-animation-delay: 0.7s, 10s;
+    animation-delay: 0.7s, 10s;
     background-image: url("../images/dog-subject-03.png");
     background-position: -2% 92%; }
   .ident--dog .ident__subject--bonnie {
-    -webkit-animation: bowwowow 25s infinite linear, dance 0.2s infinite alternate;
-    animation: bowwowow 25s infinite linear, dance 0.2s infinite alternate;
-    -webkit-animation-delay: 0.15s;
-    animation-delay: 0.15s;
+    -webkit-animation: bowwowow 30s infinite linear, dance 0.1s infinite alternate;
+    animation: bowwowow 30s infinite linear, dance 0.1s infinite alternate;
+    -webkit-animation-delay: 0.3s, 10s;
+    animation-delay: 0.3s, 10s;
     background-image: url("../images/dog-subject-04.png");
     background-position: 30% 92%; }
   .ident--dog .ident__subject--fletch {
-    -webkit-animation: bowwowow 25s infinite linear, dance 0.1s infinite alternate;
-    animation: bowwowow 25s infinite linear, dance 0.1s infinite alternate;
+    -webkit-animation: bowwowow 30s infinite linear, dance 0.12s infinite alternate;
+    animation: bowwowow 30s infinite linear, dance 0.12s infinite alternate;
+    -webkit-animation-delay: 0, 10s;
+    animation-delay: 0, 10s;
     background-image: url("../images/dog-subject-05.png");
     background-position: 60% 92%; }
   .ident--dog .ident__msg {
-    -webkit-animation: tellit 25s infinite linear;
-    animation: tellit 25s infinite linear;
+    -webkit-animation: tellit 30s infinite linear;
+    animation: tellit 30s infinite linear;
     background: transparent url("../images/dog-msg-01.png") no-repeat left top;
     background-size: 49.375%; }
 

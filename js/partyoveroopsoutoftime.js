@@ -13,7 +13,7 @@ var routes = {
   'armed': function(initialState) {
     return {
       id: 'ident--armed',
-      duration: 15000,
+      duration: 12000,
       soundOpts: {
         curve: 50000,
         oversample: '3x',
@@ -54,7 +54,15 @@ var routes = {
   },
   'dog': function(initialState) {
     return {
-      id: 'ident--dog'
+      id: 'ident--dog',
+      duration: 30000,
+      soundOpts: {
+        curve: 500,
+        oversample: '1x',
+        filterType: 'lowpass',
+        frequency: 900,
+        playbackRate: 1
+      }
     };
   },
   '404': function(initialState) {

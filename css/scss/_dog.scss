@@ -1,21 +1,28 @@
 @include keyframes(dance) {
   0% {
-    top: -2px;
+    top: -8px;
+    left: -4px;
+  }
+
+  50% {
+    top: 4px;
+    right: 8px;
   }
 
   100% {
     top: 0;
+    right: 0;
   }
 }
 
 @include keyframes(pulse) {
-  0%, 30.9999%, 32%, 34%, 36%, 38%, 40%, 42%, 44%, 46%, 48%, 50%, 52%, 54%, 56%,
+  0%, 34.9999%, 36%, 38%, 40%, 42%, 44%, 46%, 48%, 50%, 52%, 54%, 56%,
   58%, 60%, 62%, 64%, 66%, 68%, 70%, 72%, 74%, 76%, 78%, 80%, 82%, 84%, 86%, 88%,
   90%, 92%, 94%, 96%, 98%, 100% {
     @include filter(brightness(1));
   }
 
-  31%, 33%, 35%, 37%, 39%, 41%, 43%, 45%, 47%, 49%, 51%, 53%, 55%, 57%, 59% {
+  35%, 37%, 39%, 41%, 43%, 45%, 47%, 49%, 51%, 53%, 55%, 57%, 59% {
     @include filter(brightness(3));
   }
 
@@ -39,11 +46,11 @@
 }
 
 @include keyframes(fakedelay) {
-  0%, 30.9999% {
+  0%, 34.9999% {
     transform: scale(0);
   }
 
-  31%, 100% {
+  35%, 100% {
     transform: scale(1);
   }
 }
@@ -53,11 +60,11 @@
     opacity: 1;
   }
 
-  5%, 30.9999% {
+  5%, 34.9999% {
     opacity: 0;
   }
 
-  31%, 90% {
+  35%, 90% {
     opacity: 0.3;
   }
 
@@ -67,42 +74,44 @@
 }
 
 @include keyframes(tellit) {
-  0%, 5% {
+  0%, 1% {
     transform: translate3d(0, -100%, 0);
   }
 
-  20%, 100% {
-    transform: translate3d(0, -5%, 0);
+  10%, 100% {
+    transform: translate3d(0, 0, 0);
   }
 }
 
 @include keyframes(pizzapizza) {
-  0%, 29% {
+  0%, 33% {
     transform: translate3d(20%, -100%, 0);
   }
 
-  30%, 100% {
+  34%, 100% {
     transform: translate3d(0, 0, 0);
   }
 }
 
 @include keyframes(bowwowow) {
-  0%, 26% {
+  0%, 10% {
     transform: translate3d(-100%, 0, 0);
   }
 
-  27%, 100% {
+  20%, 100% {
     transform: translate3d(0, 0, 0);
   }
 }
 
 .ident--dog {
-  @include animation(pulse 25s infinite);
+  $duration: 30s;
+
+  @include animation(pulse $duration infinite);
   background: #e1b38f url("../images/dog-bg-01.jpg") no-repeat center bottom;
   background-size: 100%;
 
   .ident__background {
-    @include animation(lazers 0.3s infinite, fakedelay 25s infinite);
+    @include animation(lazers 0.3s infinite, fakedelay $duration infinite);
     background: linear-gradient(
       25deg,
       rgba(#000,0.2) 0%,
@@ -141,7 +150,7 @@
   }
 
   .ident__background__extra {
-    @include animation(curtain 25s infinite);
+    @include animation(curtain $duration infinite);
     background-color: #000;
   }
 
@@ -163,7 +172,7 @@
   }
 
   .ident__subject--pizza {
-    @include animation(pizzapizza 25s infinite linear);
+    @include animation(pizzapizza $duration infinite linear);
     background-image: url("../images/dog-subject-02.png");
   }
 
@@ -175,27 +184,28 @@
   }
 
   .ident__subject--jerry {
-    @include animation(bowwowow 25s infinite linear, dance 0.12s infinite alternate);
-    @include animation-delay(0.5s);
+    @include animation(bowwowow $duration infinite linear, dance 0.12s infinite alternate);
+    @include animation-delay(0.7s, 10s);
     background-image: url("../images/dog-subject-03.png");
     background-position: -2% 92%;
   }
 
   .ident__subject--bonnie {
-    @include animation(bowwowow 25s infinite linear, dance 0.2s infinite alternate);
-    @include animation-delay(0.15s);
+    @include animation(bowwowow $duration infinite linear, dance 0.1s infinite alternate);
+    @include animation-delay(0.3s, 10s);
     background-image: url("../images/dog-subject-04.png");
     background-position: 30% 92%;
   }
 
   .ident__subject--fletch {
-    @include animation(bowwowow 25s infinite linear, dance 0.1s infinite alternate);
+    @include animation(bowwowow $duration infinite linear, dance 0.12s infinite alternate);
+    @include animation-delay(0, 10s);
     background-image: url("../images/dog-subject-05.png");
     background-position: 60% 92%;
   }
 
   .ident__msg {
-    @include animation(tellit 25s infinite linear);
+    @include animation(tellit $duration infinite linear);
     background: transparent url("../images/dog-msg-01.png") no-repeat left top;
     background-size: percent(632px, 1280px);
   }
