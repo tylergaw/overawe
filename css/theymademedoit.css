@@ -399,6 +399,32 @@ body {
     background: transparent url("../images/dog-msg-01.png") no-repeat left top;
     background-size: 49.375%; }
 
+.ident__background--precious {
+  background: #a73a1c url("../images/precious-bg-01.gif") repeat center;
+  background-size: 100%;
+  background-blend-mode: exclusion; }
+
+.ident__subject--precious {
+  background: transparent url("../images/precious-subject-01.png") no-repeat center bottom;
+  background-size: 75%;
+  bottom: 0;
+  height: 100%;
+  position: absolute;
+  width: 100%; }
+
+.ident__msg--precious {
+  color: #fff;
+  font-family: arial;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  left: -2.5%;
+  width: 110%;
+  line-height: 1;
+  top: -2%;
+  font-size: 14vw;
+  text-align: justify; }
+
 .animated.paused,
 .paused .animated {
   -webkit-animation-play-state: paused;

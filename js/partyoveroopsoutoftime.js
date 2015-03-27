@@ -65,6 +65,11 @@ var routes = {
       }
     };
   },
+  'precious': function(initialState) {
+    return {
+      id: 'ident--precious'
+    };
+  },
   '404': function(initialState) {
     return {
       id: 'ident--404'
