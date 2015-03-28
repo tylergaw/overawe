@@ -67,7 +67,14 @@ var routes = {
   },
   'precious': function(initialState) {
     return {
-      id: 'ident--precious'
+      id: 'ident--precious',
+      soundOpts: {
+        curve: 2000,
+        oversample: '4x',
+        filterType: 'highpass',
+        frequency: 700,
+        playbackRate: 1.1
+      }
     };
   },
   '404': function(initialState) {

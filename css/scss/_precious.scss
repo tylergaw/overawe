@@ -13,18 +13,45 @@
   width: 100%;
 }
 
+$color--base--precious: #78ff00;
+
+@include keyframes(bothered) {
+  0%, 49.999% {
+    @include filter(
+      drop-shadow(0 0 0 transparent)
+    );
+  }
+
+  50% {
+    @include filter(
+      drop-shadow(0 0 0 adjust-hue($color--base--precious, -10deg))
+      drop-shadow(0 0 0 adjust-hue($color--base--precious, -20deg))
+      drop-shadow(0 0 0 adjust-hue($color--base--precious, -30deg))
+      drop-shadow(0 0 0 adjust-hue($color--base--precious, -40deg))
+      drop-shadow(0 0 0 adjust-hue($color--base--precious, -50deg))
+      drop-shadow(0 0 0 adjust-hue($color--base--precious, -60deg))
+      drop-shadow(0 0 0 adjust-hue($color--base--precious, -70deg))
+    );
+  }
+
+  100% {
+    @include filter(
+      drop-shadow(0 15vw 0 adjust-hue($color--base--precious, -10deg))
+      drop-shadow(0 30vw 0 adjust-hue($color--base--precious, -20deg))
+      drop-shadow(0 45vw 0 adjust-hue($color--base--precious, -30deg))
+      drop-shadow(0 60vw 0 adjust-hue($color--base--precious, -40deg))
+      drop-shadow(0 75vw 0 adjust-hue($color--base--precious, -50deg))
+      drop-shadow(0 90vw 0 adjust-hue($color--base--precious, -60deg))
+      drop-shadow(0 105vw 0 adjust-hue($color--base--precious, -70deg))
+    );
+  }
+}
+
 .ident__msg--precious {
-  color: #fff;
-  font-family: arial;
-  font-weight: bold;
-  text-transform: uppercase;
-  text-align: center;
-  left: -2.5%;
-  width: 110%;
-  line-height: 1;
-
+  @include animation(bothered 5s infinite);
+  background: transparent url("../images/precious-msg-01.png") no-repeat center top;
+  background-size: 100%;
+  left: -1.5%;
   top: -2%;
-
-  font-size: 14vw;
-  text-align: justify;
+  width: 103%;
 }

@@ -412,18 +412,34 @@ body {
   position: absolute;
   width: 100%; }
 
+@-webkit-keyframes bothered {
+  0%, 49.999% {
+    -webkit-filter: drop-shadow(0 0 0 transparent);
+    filter: drop-shadow(0 0 0 transparent); }
+  50% {
+    -webkit-filter: drop-shadow(0 0 0 #a2ff00) drop-shadow(0 0 0 #cdff00) drop-shadow(0 0 0 #f7ff00) drop-shadow(0 0 0 #ffdc00) drop-shadow(0 0 0 #ffb200) drop-shadow(0 0 0 #ff8700) drop-shadow(0 0 0 #ff5d00);
+    filter: drop-shadow(0 0 0 #a2ff00) drop-shadow(0 0 0 #cdff00) drop-shadow(0 0 0 #f7ff00) drop-shadow(0 0 0 #ffdc00) drop-shadow(0 0 0 #ffb200) drop-shadow(0 0 0 #ff8700) drop-shadow(0 0 0 #ff5d00); }
+  100% {
+    -webkit-filter: drop-shadow(0 15vw 0 #a2ff00) drop-shadow(0 30vw 0 #cdff00) drop-shadow(0 45vw 0 #f7ff00) drop-shadow(0 60vw 0 #ffdc00) drop-shadow(0 75vw 0 #ffb200) drop-shadow(0 90vw 0 #ff8700) drop-shadow(0 105vw 0 #ff5d00);
+    filter: drop-shadow(0 15vw 0 #a2ff00) drop-shadow(0 30vw 0 #cdff00) drop-shadow(0 45vw 0 #f7ff00) drop-shadow(0 60vw 0 #ffdc00) drop-shadow(0 75vw 0 #ffb200) drop-shadow(0 90vw 0 #ff8700) drop-shadow(0 105vw 0 #ff5d00); } }
+@keyframes bothered {
+  0%, 49.999% {
+    -webkit-filter: drop-shadow(0 0 0 transparent);
+    filter: drop-shadow(0 0 0 transparent); }
+  50% {
+    -webkit-filter: drop-shadow(0 0 0 #a2ff00) drop-shadow(0 0 0 #cdff00) drop-shadow(0 0 0 #f7ff00) drop-shadow(0 0 0 #ffdc00) drop-shadow(0 0 0 #ffb200) drop-shadow(0 0 0 #ff8700) drop-shadow(0 0 0 #ff5d00);
+    filter: drop-shadow(0 0 0 #a2ff00) drop-shadow(0 0 0 #cdff00) drop-shadow(0 0 0 #f7ff00) drop-shadow(0 0 0 #ffdc00) drop-shadow(0 0 0 #ffb200) drop-shadow(0 0 0 #ff8700) drop-shadow(0 0 0 #ff5d00); }
+  100% {
+    -webkit-filter: drop-shadow(0 15vw 0 #a2ff00) drop-shadow(0 30vw 0 #cdff00) drop-shadow(0 45vw 0 #f7ff00) drop-shadow(0 60vw 0 #ffdc00) drop-shadow(0 75vw 0 #ffb200) drop-shadow(0 90vw 0 #ff8700) drop-shadow(0 105vw 0 #ff5d00);
+    filter: drop-shadow(0 15vw 0 #a2ff00) drop-shadow(0 30vw 0 #cdff00) drop-shadow(0 45vw 0 #f7ff00) drop-shadow(0 60vw 0 #ffdc00) drop-shadow(0 75vw 0 #ffb200) drop-shadow(0 90vw 0 #ff8700) drop-shadow(0 105vw 0 #ff5d00); } }
 .ident__msg--precious {
-  color: #fff;
-  font-family: arial;
-  font-weight: bold;
-  text-transform: uppercase;
-  text-align: center;
-  left: -2.5%;
-  width: 110%;
-  line-height: 1;
+  -webkit-animation: bothered 5s infinite;
+  animation: bothered 5s infinite;
+  background: transparent url("../images/precious-msg-01.png") no-repeat center top;
+  background-size: 100%;
+  left: -1.5%;
   top: -2%;
-  font-size: 14vw;
-  text-align: justify; }
+  width: 103%; }
 
 .animated.paused,
 .paused .animated {
