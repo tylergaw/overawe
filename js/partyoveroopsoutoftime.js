@@ -81,9 +81,10 @@ var routes = {
   'north': function(initialState) {
     return {
       id: 'ident--north',
+      duration: 15000,
       soundOpts: {
-        curve: 100,
-        oversample: 'none',
+        curve: 1000,
+        oversample: '4x',
         filterType: 'lowpass',
         frequency: 20000,
         playbackRate: 1
