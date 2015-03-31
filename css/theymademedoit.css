@@ -441,6 +441,10 @@ body {
   top: -2%;
   width: 103%; }
 
+.ident__msg--north {
+  background: #232323 url("../images/north-msg-01.png") no-repeat center center;
+  background-size: 90%; }
+
 .animated.paused,
 .paused .animated {
   -webkit-animation-play-state: paused;
