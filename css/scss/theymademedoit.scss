@@ -34,6 +34,11 @@ body {
 @import "precious";
 @import "north";
 
+.ident__msg--fourohfour {
+  background: transparent url("../images/404-msg.png") no-repeat center center;
+  background-size: 80%;
+}
+
 .animated.paused,
 .paused .animated {
   -webkit-animation-play-state: paused;

@@ -5,9 +5,10 @@ var namespace = 'overawe/',
   sceneInterval = null,
   sceneDuration = 25000,
   curRouteIndex = 0,
-  notFoundRoute = '404',
+  notFoundRoute = 'fourohfour',
   canvas = document.getElementById('canvas'),
-  store = {};
+  store = {},
+  ctx = new AudioContext();
 
 var routes = {
   'armed': function(initialState) {
@@ -77,9 +78,21 @@ var routes = {
       }
     };
   },
-  '404': function(initialState) {
+  'north': function(initialState) {
     return {
-      id: 'ident--404'
+      id: 'ident--north',
+      soundOpts: {
+        curve: 100,
+        oversample: 'none',
+        filterType: 'lowpass',
+        frequency: 20000,
+        playbackRate: 1
+      }
+    };
+  },
+  'fourohfour': function(initialState) {
+    return {
+      id: 'ident--fourohfour'
     };
   }
 };
@@ -142,10 +155,9 @@ function makeDistortionCurve(amount) {
 };
 
 function createSound(audio, opts) {
-  var ctx = new AudioContext(),
-    distortion = ctx.createWaveShaper(),
-    gainNode = ctx.createGain(),
-    biquadFilter = ctx.createBiquadFilter();
+  var distortion = ctx.createWaveShaper();
+  var gainNode = ctx.createGain();
+  var biquadFilter = ctx.createBiquadFilter();
 
   distortion.curve = makeDistortionCurve(opts.curve || 5000);
   // This can only be 'none', '2x', '4x'
@@ -186,8 +198,12 @@ function render(state) {
   state.el.classList.remove('hidden');
   state.el.classList.remove('paused');
 
-  if (playAudio) {
-    state.sound.play();
+  if (playAudio && state.sound) {
+    try {
+      state.sound.play();
+    } catch (e) {
+      console.log('No sound found. Hey, that rhymes.');
+    }
   }
 
   if (isPlaying && !isSticky) {
@@ -224,6 +240,9 @@ function populateStore() {
 
     store[key] = curStore;
   });
+
+  store.fourohfour = routes.fourohfour();
+  store.fourohfour.el = document.getElementById('fourohfour');
 }
 
 function paramsStrToObj(str) {

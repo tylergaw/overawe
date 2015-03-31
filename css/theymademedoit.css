@@ -445,6 +445,10 @@ body {
   background: #232323 url("../images/north-msg-01.png") no-repeat center center;
   background-size: 90%; }
 
+.ident__msg--fourohfour {
+  background: transparent url("../images/404-msg.png") no-repeat center center;
+  background-size: 80%; }
+
 .animated.paused,
 .paused .animated {
   -webkit-animation-play-state: paused;
