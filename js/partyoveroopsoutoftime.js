@@ -91,6 +91,18 @@ var routes = {
       }
     };
   },
+  'buy': function(initialState) {
+    return {
+      id: 'ident--buy',
+      soundOpts: {
+        curve: 200,
+        oversample: '4x',
+        filterType: 'highpass',
+        frequency: 100,
+        playbackRate: 2
+      }
+    };
+  },
   'fourohfour': function(initialState) {
     return {
       id: 'ident--fourohfour'

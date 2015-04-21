@@ -445,6 +445,21 @@ body {
   background: #232323 url("../images/north-msg-01.png") no-repeat center center;
   background-size: 90%; }
 
+.ident__background--buy {
+  background: #002cff url("../images/buy-bg-01.png") no-repeat center 6%;
+  background-size: 100%; }
+
+.ident__msg--buy {
+  background: black url("../images/buy-msg-01.gif") no-repeat left center;
+  background-size: 130%;
+  border-radius: 0 0 100%;
+  box-shadow: inset -6px -6px 25px rgba(255, 255, 0, 0.8);
+  height: 60%;
+  width: 55%; }
+
+.paused .ident__msg--buy {
+  background-image: url("../images/buy-msg-paused.png"); }
+
 .ident__msg--fourohfour {
   background: transparent url("../images/404-msg.png") no-repeat center center;
   background-size: 80%; }
