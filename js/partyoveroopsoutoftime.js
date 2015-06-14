@@ -94,12 +94,13 @@ var routes = {
   'buy': function(initialState) {
     return {
       id: 'ident--buy',
+      duration: 15000,
       soundOpts: {
         curve: 200,
         oversample: '4x',
         filterType: 'highpass',
         frequency: 100,
-        playbackRate: 2
+        playbackRate: 1.5
       }
     };
   },
