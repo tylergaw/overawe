@@ -1,0 +1,25 @@
+.ident--building .ident__background {
+  animation: building-bg 45s infinite linear;
+  height: 110%;
+  width: 150%;
+}
+
+@keyframes building-bg {
+  to {
+    transform: translate3d(-15%, -3%, 0);
+  }
+}
+
+.ident__background--building-one {
+  background-image: url("../images/building-bg-01.jpg");
+  background-position: left bottom;
+}
+
+.ident__msg--building {
+  background: transparent url("../images/building-msg-01.png") no-repeat center 10%;
+  background-size: 100%;
+
+  @media screen and (min-width: 763px) {
+    background-size: auto;
+  }
+}

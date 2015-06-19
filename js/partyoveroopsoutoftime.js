@@ -5,12 +5,25 @@ var namespace = 'overawe/',
   sceneInterval = null,
   sceneDuration = 25000,
   curRouteIndex = 0,
+  introRoute = 'building',
   notFoundRoute = 'fourohfour',
   canvas = document.getElementById('canvas'),
   store = {},
   ctx = new AudioContext();
 
 var routes = {
+  'building': function(initialState) {
+    return {
+      id: 'ident--building',
+      soundOpts: {
+        curve: 250,
+        oversample: '1x',
+        filterType: 'lowpass',
+        frequency: 1000,
+        playbackRate: 0.9
+      }
+    };
+  },
   'armed': function(initialState) {
     return {
       id: 'ident--armed',
@@ -272,7 +285,7 @@ function paramsStrToObj(str) {
 }
 
 function getRouteName() {
-  return window.location.pathname.split(namespace)[1].replace('/', '') || 'armed';
+  return window.location.pathname.split(namespace)[1].replace('/', '') || 'building';
 }
 
 function handlePopState(e) {
