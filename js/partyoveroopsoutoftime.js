@@ -5,16 +5,17 @@ var namespace = 'overawe/',
   sceneInterval = null,
   sceneDuration = 25000,
   curRouteIndex = 0,
-  introRoute = 'building',
+  curRouteName = '',
+  introRoute = 'intro',
   notFoundRoute = 'fourohfour',
   canvas = document.getElementById('canvas'),
   store = {},
   ctx = new AudioContext();
 
 var routes = {
-  'building': function(initialState) {
+  'intro': function(initialState) {
     return {
-      id: 'ident--building',
+      id: 'ident--intro',
       soundOpts: {
         curve: 250,
         oversample: '1x',
@@ -125,10 +126,14 @@ var routes = {
 };
 
 var playableRoutes = Object.keys(routes).filter(function(key) {
-  return key !== notFoundRoute;
+  return key !== notFoundRoute && key !== introRoute;
 });
 
 function makeItStop() {
+  if (isStaticRoute(curRouteName)) {
+    return false;
+  }
+
   var target = document.getElementsByTagName('body')[0],
     className = 'paused',
     sound = store[playableRoutes[curRouteIndex]].sound;
@@ -212,6 +217,10 @@ function bodyOnKeyup(e) {
   }
 }
 
+function isStaticRoute(routeName) {
+  return playableRoutes.indexOf(routeName) === -1;
+}
+
 function render(state) {
   clearInterval(sceneInterval);
 
@@ -233,7 +242,7 @@ function render(state) {
     }
   }
 
-  if (isPlaying && !isSticky) {
+  if (isPlaying && !isSticky && !isStaticRoute(curRouteName)) {
     sceneInterval = setInterval(advance, state.duration || sceneDuration);
   }
 }
@@ -241,20 +250,25 @@ function render(state) {
 function transitionTo(routeName) {
   var route = routeName;
 
-  if (routeName === 'random') {
-    curRouteIndex = Math.floor(Math.random() * playableRoutes.length);
-    route = playableRoutes[curRouteIndex];
+  if (routeName === 'intro') {
+    route = introRoute;
   } else {
-    curRouteIndex = playableRoutes.indexOf(route);
-
-    if (curRouteIndex > -1) {
+    if (routeName === 'random') {
+      curRouteIndex = Math.floor(Math.random() * playableRoutes.length);
       route = playableRoutes[curRouteIndex];
     } else {
-      route = notFoundRoute;
+      curRouteIndex = playableRoutes.indexOf(route);
+
+      if (curRouteIndex > -1) {
+        route = playableRoutes[curRouteIndex];
+      } else {
+        route = notFoundRoute;
+      }
     }
   }
 
   window.history.pushState({}, '', route + window.location.search);
+  curRouteName = route;
   render(store[route]);
 }
 
@@ -270,6 +284,12 @@ function populateStore() {
 
   store.fourohfour = routes.fourohfour();
   store.fourohfour.el = document.getElementById('fourohfour');
+
+  store.intro = routes.intro();
+  store.intro.el = document.getElementById('intro');
+  store.intro.sound = createSound(
+    store.intro.el.querySelector('.ident__audio'),
+    store.intro.soundOpts);
 }
 
 function paramsStrToObj(str) {
@@ -285,7 +305,7 @@ function paramsStrToObj(str) {
 }
 
 function getRouteName() {
-  return window.location.pathname.split(namespace)[1].replace('/', '') || 'building';
+  return window.location.pathname.split(namespace)[1].replace('/', '') || 'intro';
 }
 
 function handlePopState(e) {
@@ -307,6 +327,14 @@ function init() {
   body.addEventListener('keyup', bodyOnKeyup, false);
   body.addEventListener('click', makeItStop, false);
   window.onpopstate = handlePopState;
+
+  document.getElementById('play-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    transitionTo('armed');
+    document.title = '▶︎ ' + document.title.split(' ')[1];
+    return false;
+  }, false);
 
   transitionTo(getRouteName());
 }
