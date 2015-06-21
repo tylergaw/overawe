@@ -316,8 +316,8 @@ function init() {
   var body = document.getElementsByTagName('body')[0],
     params = paramsStrToObj(window.location.search);
 
-  if (params.audio !== undefined) {
-    playAudio = (params.audio === 'true');
+  if (params.mute !== undefined) {
+    playAudio = false;
   }
 
   isSticky = (params.sticky === 'true');
