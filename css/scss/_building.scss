@@ -1,25 +1,156 @@
-.ident--building .ident__background {
-  animation: building-bg 45s infinite linear;
-  height: 110%;
-  width: 150%;
-}
+$building-bg-duration: 20s;
 
-@keyframes building-bg {
+@keyframes building-bg-pan {
   to {
     transform: translate3d(-15%, -3%, 0);
   }
 }
 
+@keyframes building-one-cut {
+  0%, 24.9999% {
+    opacity: 1;
+  }
+
+  25%, 99.999% {
+    opacity: 0;
+  }
+}
+
+@keyframes building-two-cut {
+  0%, 24.999%, 74.999%, 99.999% {
+    opacity: 0;
+  }
+
+  25%, 50% {
+    opacity: 1;
+  }
+}
+
+@keyframes building-three-cut {
+  0%, 49.999%, 75%, 99.999% {
+    opacity: 0;
+  }
+
+  50%, 74.999% {
+    opacity: 1;
+  }
+}
+
+@keyframes building-four-cut {
+  0%, 74.999% {
+    opacity: 0;
+  }
+
+  75%, 99.999% {
+    opacity: 1;
+  }
+}
+
+@keyframes building-bg-zoom {
+  to {
+    transform: scale3d(1.2, 1.2, 0);
+  }
+}
+
+@keyframes jitter {
+    50% {
+      opacity: 0;
+      transition: scale3d(0.5, 0.2, 1);
+    }
+
+    60% {
+      opacity: 0.5;
+      transition: scale3d(0.9, 0.8, 1);
+    }
+
+    70% {
+      opacity: 0;
+      transition: scale3d(0, 0, 0);
+    }
+
+    80% {
+      opacity: 1;
+      transition: scale3d(1, 1, 1);
+    }
+
+    90% {
+      opacity: 0.2;
+      transition: scale3d(0.2, 0.2, 1);
+    }
+
+    100% {
+      opacity: 1;
+      transition: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes float {
+  to {
+    transform: translate3d(0, 0.2em, 0);
+  }
+}
+
+.ident--building {
+  animation: jitter 0.1s 6s 4 step-start,
+    jitter 0.1s 15s 2 step-start,
+    jitter 0.1s 30s 5 step-start,
+    jitter 0.1s 45s 4 step-start,
+    jitter 0.1s 60s 6 step-start,
+    jitter 0.1s 75s 5 step-start,
+    jitter 0.1s 100s 3 step-start;
+}
+
 .ident__background--building-one {
+  animation: building-bg-pan 45s infinite ease,
+    building-one-cut $building-bg-duration infinite;
   background-image: url("../images/building-bg-01.jpg");
   background-position: left bottom;
+  height: 110%;
+  width: 150%;
+}
+
+.ident__background--building-two {
+  animation: building-bg-zoom 45s infinite ease alternate,
+    building-two-cut $building-bg-duration infinite;
+  background-image: url("../images/building-bg-02.jpg");
+  background-position: left bottom;
+  transform-origin: left bottom;
+}
+
+.ident__background--building-three {
+  animation: building-bg-zoom 45s infinite ease alternate,
+    building-three-cut $building-bg-duration infinite;
+  background-image: url("../images/building-bg-03.jpg");
+  background-position: left center;
+}
+
+.ident__background--building-four {
+  animation: building-bg-pan 45s infinite ease,
+    building-four-cut $building-bg-duration infinite;
+  background-image: url("../images/building-bg-04.jpg");
+  background-position: left top;
+  height: 110%;
+  width: 150%;
 }
 
 .ident__msg--building {
+  animation: float 1s infinite linear alternate;
   background: transparent url("../images/building-msg-01.png") no-repeat center 10%;
-  background-size: 100%;
+  background-size: 95%;
 
   @media screen and (min-width: 763px) {
     background-size: auto;
   }
+}
+
+.ident__msg--buildiing__play {
+  animation: float 0.8s infinite linear alternate;
+  background: transparent url("../images/building-msg-02.png") no-repeat center center;
+  cursor: pointer;
+  height: 90px;
+  margin: 0 auto;
+  max-width: 190px;
+  position: relative;
+  top: 45%;
+  z-index: 100;
 }
