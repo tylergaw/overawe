@@ -31,7 +31,7 @@ var routes = {
       duration: 12000,
       soundOpts: {
         curve: 50000,
-        oversample: '3x',
+        oversample: '2x',
         filterType: 'lowpass',
         frequency: 900,
         playbackRate: 1.5
@@ -305,7 +305,13 @@ function paramsStrToObj(str) {
 }
 
 function getRouteName() {
-  return window.location.pathname.split(namespace)[1].replace('/', '') || 'intro';
+  var route = window.location.pathname.split(namespace)[1];
+
+  if (route) {
+    return route.replace('/', '');
+  } else {
+    return 'intro';
+  }
 }
 
 function handlePopState(e) {

@@ -17,32 +17,77 @@ body {
 .ident__background {
   background-size: 100%; }
 
+@-webkit-keyframes building-bg-pan {
+  to {
+    transform: translate3d(-15%, -3%, 0); } }
 @keyframes building-bg-pan {
   to {
     transform: translate3d(-15%, -3%, 0); } }
+@-webkit-keyframes building-one-cut {
+  0%, 24.9999% {
+    opacity: 1; }
+  25%, 99.999% {
+    opacity: 0; } }
 @keyframes building-one-cut {
   0%, 24.9999% {
     opacity: 1; }
   25%, 99.999% {
     opacity: 0; } }
+@-webkit-keyframes building-two-cut {
+  0%, 24.999%, 74.999%, 99.999% {
+    opacity: 0; }
+  25%, 50% {
+    opacity: 1; } }
 @keyframes building-two-cut {
   0%, 24.999%, 74.999%, 99.999% {
     opacity: 0; }
   25%, 50% {
+    opacity: 1; } }
+@-webkit-keyframes building-three-cut {
+  0%, 49.999%, 75%, 99.999% {
+    opacity: 0; }
+  50%, 74.999% {
     opacity: 1; } }
 @keyframes building-three-cut {
   0%, 49.999%, 75%, 99.999% {
     opacity: 0; }
   50%, 74.999% {
     opacity: 1; } }
+@-webkit-keyframes building-four-cut {
+  0%, 74.999% {
+    opacity: 0; }
+  75%, 99.999% {
+    opacity: 1; } }
 @keyframes building-four-cut {
   0%, 74.999% {
     opacity: 0; }
   75%, 99.999% {
     opacity: 1; } }
+@-webkit-keyframes building-bg-zoom {
+  to {
+    transform: scale3d(1.2, 1.2, 0); } }
 @keyframes building-bg-zoom {
   to {
     transform: scale3d(1.2, 1.2, 0); } }
+@-webkit-keyframes jitter {
+  50% {
+    opacity: 0;
+    transition: scale3d(0.5, 0.2, 1); }
+  60% {
+    opacity: 0.5;
+    transition: scale3d(0.9, 0.8, 1); }
+  70% {
+    opacity: 0;
+    transition: scale3d(0, 0, 0); }
+  80% {
+    opacity: 1;
+    transition: scale3d(1, 1, 1); }
+  90% {
+    opacity: 0.2;
+    transition: scale3d(0.2, 0.2, 1); }
+  100% {
+    opacity: 1;
+    transition: scale3d(1, 1, 1); } }
 @keyframes jitter {
   50% {
     opacity: 0;
@@ -62,13 +107,18 @@ body {
   100% {
     opacity: 1;
     transition: scale3d(1, 1, 1); } }
+@-webkit-keyframes float {
+  to {
+    transform: translate3d(0, 0.2em, 0); } }
 @keyframes float {
   to {
     transform: translate3d(0, 0.2em, 0); } }
 .ident--building {
+  -webkit-animation: jitter 0.1s 6s 4 step-start, jitter 0.1s 15s 2 step-start, jitter 0.1s 30s 5 step-start, jitter 0.1s 45s 4 step-start, jitter 0.1s 60s 6 step-start, jitter 0.1s 75s 5 step-start, jitter 0.1s 100s 3 step-start;
   animation: jitter 0.1s 6s 4 step-start, jitter 0.1s 15s 2 step-start, jitter 0.1s 30s 5 step-start, jitter 0.1s 45s 4 step-start, jitter 0.1s 60s 6 step-start, jitter 0.1s 75s 5 step-start, jitter 0.1s 100s 3 step-start; }
 
 .ident__background--building-one {
+  -webkit-animation: building-bg-pan 45s infinite ease, building-one-cut 20s infinite;
   animation: building-bg-pan 45s infinite ease, building-one-cut 20s infinite;
   background-image: url("../images/building-bg-01.jpg");
   background-position: left bottom;
@@ -76,17 +126,20 @@ body {
   width: 150%; }
 
 .ident__background--building-two {
+  -webkit-animation: building-bg-zoom 45s infinite ease alternate, building-two-cut 20s infinite;
   animation: building-bg-zoom 45s infinite ease alternate, building-two-cut 20s infinite;
   background-image: url("../images/building-bg-02.jpg");
   background-position: left bottom;
   transform-origin: left bottom; }
 
 .ident__background--building-three {
+  -webkit-animation: building-bg-zoom 45s infinite ease alternate, building-three-cut 20s infinite;
   animation: building-bg-zoom 45s infinite ease alternate, building-three-cut 20s infinite;
   background-image: url("../images/building-bg-03.jpg");
   background-position: left center; }
 
 .ident__background--building-four {
+  -webkit-animation: building-bg-pan 45s infinite ease, building-four-cut 20s infinite;
   animation: building-bg-pan 45s infinite ease, building-four-cut 20s infinite;
   background-image: url("../images/building-bg-04.jpg");
   background-position: left top;
@@ -94,6 +147,7 @@ body {
   width: 150%; }
 
 .ident__msg--building {
+  -webkit-animation: float 1s infinite linear alternate;
   animation: float 1s infinite linear alternate;
   background: transparent url("../images/building-msg-01.png") no-repeat center 10%;
   background-size: 95%; }
@@ -102,6 +156,7 @@ body {
       background-size: auto; } }
 
 .ident__msg--buildiing__play {
+  -webkit-animation: float 0.8s infinite linear alternate;
   animation: float 0.8s infinite linear alternate;
   background: transparent url("../images/building-msg-02.png") no-repeat center center;
   cursor: pointer;
@@ -117,7 +172,25 @@ body {
     transform: none; }
   100% {
     transform: skewX(50deg) skewY(30deg) rotate(-25deg) scale(0.6); } }
+@keyframes gone {
+  0%, 80% {
+    transform: none; }
+  100% {
+    transform: skewX(50deg) skewY(30deg) rotate(-25deg) scale(0.6); } }
 @-webkit-keyframes breathe {
+  50%, 52% {
+    background-color: orange;
+    transform: scale3d(1.1, 1.1, 1.1); }
+  51%, 51.9999% {
+    background-color: #00d2ff;
+    transform: scale3d(2, 3, 2.8) rotate(45deg); }
+  95%, 97% {
+    background-color: #001961;
+    transform: scale3d(1.3, 1.3, 1.3); }
+  96%, 96.9999% {
+    background-color: #7eff00;
+    transform: scale3d(2, 5, 5.5) rotate(-58deg); } }
+@keyframes breathe {
   50%, 52% {
     background-color: orange;
     transform: scale3d(1.1, 1.1, 1.1); }
@@ -137,16 +210,39 @@ body {
     transform: translate3d(0, 0, 0); }
   100% {
     transform: translate3d(300%, 0, 0) rotate(270deg); } }
+@keyframes enter {
+  0% {
+    transform: translate3d(-300%, 0, 0) rotate(-270deg); }
+  20%, 70% {
+    transform: translate3d(0, 0, 0); }
+  100% {
+    transform: translate3d(300%, 0, 0) rotate(270deg); } }
 @-webkit-keyframes closeup {
   0%, 48%, 51%, 68%, 71% {
     background-size: 75%;
-    -webkit-filter: brightness(1); }
+    -webkit-filter: brightness(1);
+    filter: brightness(1); }
   50%, 50.9999% {
     background-size: 300%;
-    -webkit-filter: brightness(3); }
+    -webkit-filter: brightness(3);
+    filter: brightness(3); }
   70%, 70.9999% {
     background-size: 20%;
-    -webkit-filter: brightness(2); } }
+    -webkit-filter: brightness(2);
+    filter: brightness(2); } }
+@keyframes closeup {
+  0%, 48%, 51%, 68%, 71% {
+    background-size: 75%;
+    -webkit-filter: brightness(1);
+    filter: brightness(1); }
+  50%, 50.9999% {
+    background-size: 300%;
+    -webkit-filter: brightness(3);
+    filter: brightness(3); }
+  70%, 70.9999% {
+    background-size: 20%;
+    -webkit-filter: brightness(2);
+    filter: brightness(2); } }
 @-webkit-keyframes tweak {
   0%, 28%, 31% {
     left: 0;
@@ -154,7 +250,21 @@ body {
   30%, 30.9999% {
     left: -20%;
     top: 30%; } }
+@keyframes tweak {
+  0%, 28%, 31% {
+    left: 0;
+    top: 0; }
+  30%, 30.9999% {
+    left: -20%;
+    top: 30%; } }
 @-webkit-keyframes fidgit {
+  0%, 7%, 11%, 47%, 52% {
+    transform: scale3d(1, 1, 1); }
+  10%, 10.9999% {
+    transform: scale3d(12, -2, 12); }
+  50%, 50.9999% {
+    transform: scale3d(2, -5, 2); } }
+@keyframes fidgit {
   0%, 7%, 11%, 47%, 52% {
     transform: scale3d(1, 1, 1); }
   10%, 10.9999% {
@@ -173,6 +283,7 @@ body {
     background: transparent url("../images/armed-bg-extra-01.png") repeat-x left top; }
   .ident--armed .ident__subject {
     -webkit-animation: enter 8s infinite linear alternate, closeup 6s infinite linear, tweak 6s infinite linear;
+    animation: enter 8s infinite linear alternate, closeup 6s infinite linear, tweak 6s infinite linear;
     background: transparent url("../images/armed-subject-01.png") no-repeat center center;
     background-size: 75%;
     height: 100%;
@@ -180,6 +291,7 @@ body {
     width: 95%; }
   .ident--armed .ident__msg {
     -webkit-animation: fidgit 6s infinite linear;
+    animation: fidgit 6s infinite linear;
     background: transparent url("../images/armed-msg-01.png") no-repeat center 87%;
     background-size: 60%; }
 
@@ -200,10 +312,35 @@ body {
     transform: translate3d(-2px, -1px, 0) scale(0.999); }
   68%, 70%, 72%, 74%, 76%, 78%, 80%, 82%, 84%, 86%, 88%, 90%, 92%, 94%, 96%, 98%, 100% {
     transform: translate3d(-1px, 2px, 0) scale(1); } }
+@keyframes fly {
+  0% {
+    transform: translate3d(-100%, 100%, 0) scale(0.2); }
+  6.9% {
+    transform: translate3d(0, 0, 0) scale(1); }
+  7%, 9%, 11%, 13%, 15%, 17%, 19%, 21%, 23%, 25%, 27%, 29%, 31%, 33%, 35%,
+  37%, 39%, 41%, 43%, 45%, 47%, 49%, 51%, 53%, 55%, 57%, 59%, 61%, 63%, 65% {
+    transform: translate3d(2px, 0px, 0) scale(1); }
+  67%, 69%, 71%, 73%, 75%, 77%, 79%, 81%, 83%, 85%, 87%, 89%, 91%, 93%, 95%, 97%, 99% {
+    transform: translate3d(1px, -1px, 0) scale(1); }
+  91%, 92% {
+    transform: skewX(-10deg) skewY(20deg); }
+  8%, 10%, 12%, 14%, 16%, 18%, 20%, 22%, 24%, 26%, 28%, 30%, 32%, 34%,
+  38%, 40%, 42%, 44%, 46%, 48%, 50%, 52%, 54%, 56%, 58%, 60%, 62%, 64% {
+    transform: translate3d(-2px, -1px, 0) scale(0.999); }
+  68%, 70%, 72%, 74%, 76%, 78%, 80%, 82%, 84%, 86%, 88%, 90%, 92%, 94%, 96%, 98%, 100% {
+    transform: translate3d(-1px, 2px, 0) scale(1); } }
 @-webkit-keyframes track {
   100% {
     transform: translate3d(-50%, 0, 0); } }
+@keyframes track {
+  100% {
+    transform: translate3d(-50%, 0, 0); } }
 @-webkit-keyframes twirl {
+  0%, 2%, 4% {
+    transform: rotate3d(0, 0, 1, -359deg); }
+  1%, 3%, 5%, 100% {
+    transform: rotate3d(0, 0, 1, -1.6deg); } }
+@keyframes twirl {
   0%, 2%, 4% {
     transform: rotate3d(0, 0, 1, -359deg); }
   1%, 3%, 5%, 100% {
@@ -213,14 +350,22 @@ body {
     transform: translate3d(0, 0, 0) scale3d(1, 1, 1) skew(0); }
   50%, 50.9999% {
     transform: translate3d(-20%, 0, 0) scale3d(0.3, 0.7, 1) skew(10deg, 2deg); } }
+@keyframes chaos {
+  0%, 49%, 51%, 100% {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1) skew(0); }
+  50%, 50.9999% {
+    transform: translate3d(-20%, 0, 0) scale3d(0.3, 0.7, 1) skew(10deg, 2deg); } }
 .ident--find {
-  -webkit-animation: chaos 20s infinite linear; }
+  -webkit-animation: chaos 20s infinite linear;
+  animation: chaos 20s infinite linear; }
   .ident--find .ident__background {
     -webkit-animation: track 15s infinite linear;
+    animation: track 15s infinite linear;
     background: #2ab9e5 url("../images/find-bg-01.jpg") repeat left center;
     width: 500%; }
   .ident--find .ident__subject {
     -webkit-animation: twirl 10s infinite linear;
+    animation: twirl 10s infinite linear;
     background: url("../images/find-subject-01.png") no-repeat left top;
     background-size: 100%;
     height: 101%;
@@ -231,10 +376,16 @@ body {
     width: 120%; }
   .ident--find .ident__msg {
     -webkit-animation: fly 10s infinite linear;
+    animation: fly 10s infinite linear;
     background: transparent url("../images/find-msg-01.png") no-repeat 90% 5%;
     background-size: 40%; }
 
 @-webkit-keyframes arise {
+  0% {
+    transform: translate3d(0, 200%, 0); }
+  50%, 100% {
+    transform: translate3d(0, 0, 0); } }
+@keyframes arise {
   0% {
     transform: translate3d(0, 200%, 0); }
   50%, 100% {
@@ -244,7 +395,21 @@ body {
     background-position: 105% bottom; }
   100% {
     background-position: -10% bottom; } }
+@keyframes shift {
+  0%, 92% {
+    background-position: 105% bottom; }
+  100% {
+    background-position: -10% bottom; } }
 @-webkit-keyframes swim {
+  0%, 25% {
+    transform: translate3d(0, 0, 0); }
+  50% {
+    transform: translate3d(0, -2px, 0); }
+  75% {
+    transform: translate3d(1px, -2px, 0); }
+  100% {
+    transform: translate3d(2px, 0, 0); } }
+@keyframes swim {
   0%, 25% {
     transform: translate3d(0, 0, 0); }
   50% {
@@ -262,6 +427,7 @@ body {
   opacity: 0.7; }
 .ident--win .ident__subject {
   -webkit-animation: arise 15s infinite linear alternate, shift 0.4s infinite alternate;
+  animation: arise 15s infinite linear alternate, shift 0.4s infinite alternate;
   background: transparent url("../images/win-subject-01.png") no-repeat 105% bottom;
   background-size: 50%;
   height: 100%;
@@ -269,6 +435,7 @@ body {
   width: 100%; }
 .ident--win .ident__msg {
   -webkit-animation: swim 0.1s infinite linear;
+  animation: swim 0.1s infinite linear;
   background: transparent url("../images/win-msg-01.png") no-repeat 8% 90%;
   background-size: 50%; }
 
@@ -278,7 +445,7 @@ body {
 @-webkit-keyframes freebird {
   0%, 49.9999%, 56% {
     background-color: transparent;
-    background-position: center center;
+    background-position: center, center, center, center, center, center, center;
     background-blend-mode: normal;
     -webkit-filter: invert(0) grayscale(0);
     filter: invert(0) grayscale(0); }
@@ -291,7 +458,7 @@ body {
 @keyframes freebird {
   0%, 49.9999%, 56% {
     background-color: transparent;
-    background-position: center center;
+    background-position: center, center, center, center, center, center, center;
     background-blend-mode: normal;
     -webkit-filter: invert(0) grayscale(0);
     filter: invert(0) grayscale(0); }
@@ -308,7 +475,7 @@ body {
     animation: freebird 15s infinite linear;
     background-image: url("../images/view-subject-01.png"), url("../images/view-subject-01.png"), url("../images/view-subject-01.png"), url("../images/view-subject-01.png"), url("../images/view-subject-01.png"), url("../images/view-subject-01.png"), url("../images/view-subject-01.png");
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center, center, center, center, center, center, center;
     background-blend-mode: normal;
     background-size: 50%;
     height: 100%;
@@ -317,21 +484,21 @@ body {
 
 @-webkit-keyframes dance {
   0% {
-    top: -8px;
-    left: -4px; }
+    top: -45px;
+    left: -30px; }
   50% {
-    top: 4px;
-    right: 8px; }
+    top: 6px;
+    right: 30px; }
   100% {
     top: 0;
     right: 0; } }
 @keyframes dance {
   0% {
-    top: -8px;
-    left: -4px; }
+    top: -45px;
+    left: -30px; }
   50% {
-    top: 4px;
-    right: 8px; }
+    top: 6px;
+    right: 30px; }
   100% {
     top: 0;
     right: 0; } }
@@ -484,8 +651,8 @@ body {
   .ident--dog .ident__subject--fletch {
     -webkit-animation: bowwowow 30s infinite linear, dance 0.12s infinite alternate;
     animation: bowwowow 30s infinite linear, dance 0.12s infinite alternate;
-    -webkit-animation-delay: 0, 10s;
-    animation-delay: 0, 10s;
+    -webkit-animation-delay: 0s, 10s;
+    animation-delay: 0s, 10s;
     background-image: url("../images/dog-subject-05.png");
     background-position: 60% 92%; }
   .ident--dog .ident__msg {
@@ -541,16 +708,16 @@ body {
   background-size: 90%; }
 
 .ident__background--buy {
-  background: #002cff url("../images/buy-bg-01.png") no-repeat center 6%;
+  background: #002cff url("../images/buy-bg-01.png") repeat center center;
   background-size: 100%; }
 
 .ident__msg--buy {
-  background: black url("../images/buy-msg-01.gif") no-repeat left center;
-  background-size: 130%;
+  background: black url("../images/buy-msg-01.gif") repeat left top;
+  background-size: 150%;
   border-radius: 0 0 100%;
   box-shadow: inset -6px -6px 25px rgba(255, 255, 0, 0.8);
-  height: 60%;
-  width: 55%; }
+  height: 50%;
+  width: 50%; }
 
 .paused .ident__msg--buy {
   background-image: url("../images/buy-msg-paused.png"); }

@@ -1,4 +1,4 @@
-@-webkit-keyframes arise {
+@include keyframes(arise) {
   0% {
     transform: translate3d(0, 200%, 0);
   }
@@ -8,7 +8,7 @@
   }
 }
 
-@-webkit-keyframes shift {
+@include keyframes(shift) {
   0%, 92% {
     background-position: 105% bottom;
   }
@@ -18,7 +18,7 @@
   }
 }
 
-@-webkit-keyframes swim {
+@include keyframes(swim) {
   0%, 25% {
     transform: translate3d(0, 0, 0);
   }
@@ -47,9 +47,10 @@
   }
 
   .ident__subject {
-    -webkit-animation:
+    @include animation(
       arise 15s infinite linear alternate,
-      shift 0.4s infinite alternate;
+      shift 0.4s infinite alternate
+    );
     background: transparent url("../images/win-subject-01.png") no-repeat 105% bottom;
     background-size: 50%;
     height: 100%;
@@ -58,7 +59,7 @@
   }
 
   .ident__msg {
-    -webkit-animation: swim 0.1s infinite linear;
+    @include animation(swim 0.1s infinite linear);
     background: transparent url("../images/win-msg-01.png") no-repeat 8% 90%;
     background-size: 50%;
   }

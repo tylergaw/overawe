@@ -1,12 +1,12 @@
 @include keyframes(dance) {
   0% {
-    top: -8px;
-    left: -4px;
+    top: -45px;
+    left: -30px;
   }
 
   50% {
-    top: 4px;
-    right: 8px;
+    top: 6px;
+    right: 30px;
   }
 
   100% {
@@ -199,7 +199,7 @@
 
   .ident__subject--fletch {
     @include animation(bowwowow $duration infinite linear, dance 0.12s infinite alternate);
-    @include animation-delay(0, 10s);
+    @include animation-delay(0s, 10s);
     background-image: url("../images/dog-subject-05.png");
     background-position: 60% 92%;
   }

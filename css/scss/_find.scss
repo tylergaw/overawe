@@ -1,4 +1,4 @@
-@-webkit-keyframes fly {
+@include keyframes(fly) {
   0% {
     transform: translate3d(-100%, 100%, 0) scale(0.2);
   }
@@ -30,13 +30,13 @@
   }
 }
 
-@-webkit-keyframes track {
+@include keyframes(track) {
   100% {
     transform: translate3d(-50%, 0, 0);
   }
 }
 
-@-webkit-keyframes twirl {
+@include keyframes(twirl) {
   0%, 2%, 4% {
     transform: rotate3d(0, 0, 1, -359deg);
   }
@@ -46,7 +46,7 @@
   }
 }
 
-@-webkit-keyframes chaos {
+@include keyframes(chaos) {
   0%, 49%, 51%, 100% {
     transform: translate3d(0, 0, 0) scale3d(1, 1, 1) skew(0);
   }
@@ -57,16 +57,16 @@
 }
 
 .ident--find {
-  -webkit-animation: chaos 20s infinite linear;
+  @include animation(chaos 20s infinite linear);
 
   .ident__background {
-    -webkit-animation: track 15s infinite linear;
+    @include animation(track 15s infinite linear);
     background: #2ab9e5 url("../images/find-bg-01.jpg") repeat left center;
     width: 500%;
   }
 
   .ident__subject {
-    -webkit-animation: twirl 10s infinite linear;
+    @include animation(twirl 10s infinite linear);
     background: url("../images/find-subject-01.png") no-repeat left top;
     background-size: 100%;
     height: 101%;
@@ -78,7 +78,7 @@
   }
 
   .ident__msg {
-    -webkit-animation: fly 10s infinite linear;
+    @include animation(fly 10s infinite linear);
     background: transparent url("../images/find-msg-01.png") no-repeat 90% 5%;
     background-size: 40%;
   }
