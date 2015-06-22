@@ -1,0 +1,72 @@
+@include keyframes(hide-controls) {
+  to {
+    background-color: rgba(black, 0);
+  }
+}
+
+.controls {
+  @include animation(hide-controls 0.1s 1s 1 forwards);
+  background-color: rgba(black, 0.6);
+  box-sizing: border-box;
+  bottom: 0.6em;
+  padding: 0 0.5em;
+  position: absolute;
+  width: 100%;
+  z-index: 666;
+}
+
+.controls-container {
+  background-color: rgba(black, 0.6);
+  border-radius: 2px;
+  box-sizing: border-box;
+  font-weight: bold;
+  margin: 0 auto;
+  opacity: 0;
+  padding: 1.4em;
+  text-align: right;
+  transition: opacity 0.2s;
+  width: 100%;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  a {
+    color: white;
+    display: inline-block;
+    padding: 0 0.4em;
+    text-decoration: none;
+  }
+}
+
+.btn {
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-family: arial, sans-serif;
+  font-size: inherit;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+// I used an id for styles cause I want to watch the world burn.
+#watermark {
+  bottom: 0.5em;
+  display: block;
+  left: 1em;
+  opacity: 0.9;
+  position: absolute;
+  width: 80px;
+  z-index: 777;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+
+  path {
+    fill: #fff;
+  }
+}

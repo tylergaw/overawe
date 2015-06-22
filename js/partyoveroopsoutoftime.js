@@ -161,6 +161,30 @@ function makeItStop() {
   }
 }
 
+function mute(e) {
+  var sound = store[curRouteName].sound;
+  var target = e.target;
+
+  if (e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  if (!isPlaying) {
+    return false;
+  }
+
+  if (!sound.paused) {
+    sound.pause();
+    playAudio = false;
+    target.innerHTML = 'muted';
+  } else {
+    sound.play();
+    playAudio = true;
+    target.innerHTML = 'mute';
+  }
+}
+
 function advance() {
   curRouteIndex++;
 
@@ -341,6 +365,8 @@ function init() {
     document.title = '▶︎ ' + document.title.split(' ')[1];
     return false;
   }, false);
+
+  document.getElementById('btn-mute').addEventListener('click', mute, false);
 
   transitionTo(getRouteName());
 }

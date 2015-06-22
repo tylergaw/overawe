@@ -1,6 +1,7 @@
 html,
 body {
   background: #fff url("../images/body-bg.png") repeat left top;
+  font-family: arial, sans-serif;
   height: 100%;
   margin: 0;
   overflow: hidden;
@@ -722,6 +723,66 @@ body {
 .paused .ident__msg--buy {
   background-image: url("../images/buy-msg-paused.png"); }
 
+@-webkit-keyframes hide-controls {
+  to {
+    background-color: transparent; } }
+@keyframes hide-controls {
+  to {
+    background-color: transparent; } }
+.controls {
+  -webkit-animation: hide-controls 0.1s 1s 1 forwards;
+  animation: hide-controls 0.1s 1s 1 forwards;
+  background-color: rgba(0, 0, 0, 0.6);
+  box-sizing: border-box;
+  bottom: 0.6em;
+  padding: 0 0.5em;
+  position: absolute;
+  width: 100%;
+  z-index: 666; }
+
+.controls-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 2px;
+  box-sizing: border-box;
+  font-weight: bold;
+  margin: 0 auto;
+  opacity: 0;
+  padding: 1.4em;
+  text-align: right;
+  transition: opacity 0.2s;
+  width: 100%; }
+  .controls-container:hover {
+    opacity: 1; }
+  .controls-container a {
+    color: white;
+    display: inline-block;
+    padding: 0 0.4em;
+    text-decoration: none; }
+
+.btn {
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-family: arial, sans-serif;
+  font-size: inherit;
+  font-weight: bold;
+  text-transform: uppercase; }
+
+#watermark {
+  bottom: 0.5em;
+  display: block;
+  left: 1em;
+  opacity: 0.9;
+  position: absolute;
+  width: 80px;
+  z-index: 777; }
+  #watermark:hover, #watermark:focus {
+    opacity: 1; }
+  #watermark path {
+    fill: #fff; }
+
 .ident__msg--fourohfour {
   background: transparent url("../images/404-msg.png") no-repeat center center;
   background-size: 80%; }
@@ -734,16 +795,3 @@ body {
 .hidden {
   display: none;
   visibility: hidden; }
-
-#watermark {
-  bottom: 0.5em;
-  display: block;
-  left: 1em;
-  opacity: 0.9;
-  position: absolute;
-  width: 80px;
-  z-index: 99; }
-  #watermark:hover, #watermark:focus {
-    opacity: 1; }
-  #watermark path {
-    fill: #fff; }

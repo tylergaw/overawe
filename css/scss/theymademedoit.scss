@@ -7,6 +7,7 @@
 html,
 body {
   background: #fff url("../images/body-bg.png") repeat left top;
+  font-family: arial, sans-serif;
   height: 100%;
   margin: 0;
   overflow: hidden;
@@ -35,6 +36,7 @@ body {
 @import "precious";
 @import "north";
 @import "buy";
+@import "controls";
 
 .ident__msg--fourohfour {
   background: transparent url("../images/404-msg.png") no-repeat center center;
@@ -50,24 +52,4 @@ body {
 .hidden {
   display: none;
   visibility: hidden;
-}
-
-// I used an id for styles cause I want to watch the world burn.
-#watermark {
-  bottom: 0.5em;
-  display: block;
-  left: 1em;
-  opacity: 0.9;
-  position: absolute;
-  width: 80px;
-  z-index: 99;
-
-  &:hover,
-  &:focus {
-    opacity: 1;
-  }
-
-  path {
-    fill: #fff;
-  }
 }
