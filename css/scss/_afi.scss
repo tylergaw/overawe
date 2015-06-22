@@ -1,0 +1,16 @@
+@include keyframes(afi) {
+  to {
+    opacity: 1;
+  }
+}
+
+.ident--afi {
+  background-color: #d40000;
+}
+
+.ident__msg--afi {
+  @include animation(afi 2s 4s 1 forwards);
+  background: #d40000 url("../images/afi-msg.jpg") no-repeat center center;
+  background-size: contain;
+  opacity: 0;
+}

@@ -118,6 +118,19 @@ var routes = {
       }
     };
   },
+  'afi': function(initialState) {
+    return {
+      id: 'ident--afi',
+      duration: 17000,
+      soundOpts: {
+        curve: 300,
+        oversample: '3x',
+        filterType: 'lowpass',
+        frequency: 2000,
+        playbackRate: 1
+      }
+    };
+  },
   'fourohfour': function(initialState) {
     return {
       id: 'ident--fourohfour'
