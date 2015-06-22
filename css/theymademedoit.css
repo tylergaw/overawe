@@ -25,44 +25,54 @@ body {
   to {
     transform: translate3d(-15%, -3%, 0); } }
 @-webkit-keyframes building-one-cut {
-  0%, 24.9999% {
+  0%, 19.9999% {
     opacity: 1; }
-  25%, 99.999% {
+  20%, 99.999% {
     opacity: 0; } }
 @keyframes building-one-cut {
-  0%, 24.9999% {
+  0%, 19.9999% {
     opacity: 1; }
-  25%, 99.999% {
+  20%, 99.999% {
     opacity: 0; } }
 @-webkit-keyframes building-two-cut {
-  0%, 24.999%, 74.999%, 99.999% {
+  0%, 19.999%, 40%, 99.999% {
     opacity: 0; }
-  25%, 50% {
+  20%, 39.999% {
     opacity: 1; } }
 @keyframes building-two-cut {
-  0%, 24.999%, 74.999%, 99.999% {
+  0%, 19.999%, 40%, 99.999% {
     opacity: 0; }
-  25%, 50% {
+  20%, 39.999% {
     opacity: 1; } }
 @-webkit-keyframes building-three-cut {
-  0%, 49.999%, 75%, 99.999% {
+  0%, 39.999%, 60%, 99.999% {
     opacity: 0; }
-  50%, 74.999% {
+  40%, 59.999% {
     opacity: 1; } }
 @keyframes building-three-cut {
-  0%, 49.999%, 75%, 99.999% {
+  0%, 39.999%, 60%, 99.999% {
     opacity: 0; }
-  50%, 74.999% {
+  40%, 59.999% {
     opacity: 1; } }
 @-webkit-keyframes building-four-cut {
-  0%, 74.999% {
+  0%, 59.999%, 80%, 99.999% {
     opacity: 0; }
-  75%, 99.999% {
+  60%, 79.999% {
     opacity: 1; } }
 @keyframes building-four-cut {
-  0%, 74.999% {
+  0%, 59.999%, 80%, 99.999% {
     opacity: 0; }
-  75%, 99.999% {
+  60%, 79.999% {
+    opacity: 1; } }
+@-webkit-keyframes building-five-cut {
+  0%, 79.999% {
+    opacity: 0; }
+  80%, 99.999% {
+    opacity: 1; } }
+@keyframes building-five-cut {
+  0%, 79.999% {
+    opacity: 0; }
+  80%, 99.999% {
     opacity: 1; } }
 @-webkit-keyframes building-bg-zoom {
   to {
@@ -119,33 +129,41 @@ body {
   animation: jitter 0.1s 6s 4 step-start, jitter 0.1s 15s 2 step-start, jitter 0.1s 30s 5 step-start, jitter 0.1s 45s 4 step-start, jitter 0.1s 60s 6 step-start, jitter 0.1s 75s 5 step-start, jitter 0.1s 100s 3 step-start; }
 
 .ident__background--building-one {
-  -webkit-animation: building-bg-pan 45s infinite ease, building-one-cut 20s infinite;
-  animation: building-bg-pan 45s infinite ease, building-one-cut 20s infinite;
+  -webkit-animation: building-bg-pan 45s infinite ease, building-one-cut 25s infinite;
+  animation: building-bg-pan 45s infinite ease, building-one-cut 25s infinite;
   background-image: url("../images/building-bg-01.jpg");
   background-position: left bottom;
   height: 110%;
   width: 150%; }
 
 .ident__background--building-two {
-  -webkit-animation: building-bg-zoom 45s infinite ease alternate, building-two-cut 20s infinite;
-  animation: building-bg-zoom 45s infinite ease alternate, building-two-cut 20s infinite;
+  -webkit-animation: building-bg-zoom 45s infinite ease alternate, building-two-cut 25s infinite;
+  animation: building-bg-zoom 45s infinite ease alternate, building-two-cut 25s infinite;
   background-image: url("../images/building-bg-02.jpg");
   background-position: left bottom;
   transform-origin: left bottom; }
 
 .ident__background--building-three {
-  -webkit-animation: building-bg-zoom 45s infinite ease alternate, building-three-cut 20s infinite;
-  animation: building-bg-zoom 45s infinite ease alternate, building-three-cut 20s infinite;
+  -webkit-animation: building-bg-zoom 45s infinite ease alternate, building-three-cut 25s infinite;
+  animation: building-bg-zoom 45s infinite ease alternate, building-three-cut 25s infinite;
   background-image: url("../images/building-bg-03.jpg");
   background-position: left center; }
 
 .ident__background--building-four {
-  -webkit-animation: building-bg-pan 45s infinite ease, building-four-cut 20s infinite;
-  animation: building-bg-pan 45s infinite ease, building-four-cut 20s infinite;
+  -webkit-animation: building-bg-pan 45s infinite ease, building-four-cut 25s infinite;
+  animation: building-bg-pan 45s infinite ease, building-four-cut 25s infinite;
   background-image: url("../images/building-bg-04.jpg");
   background-position: left top;
   height: 110%;
   width: 150%; }
+
+.ident__background--building-five {
+  -webkit-animation: building-five-cut 25s infinite;
+  animation: building-five-cut 25s infinite;
+  background-image: url("../images/building-bg-05.gif");
+  background-position: center;
+  height: 110%;
+  width: 110%; }
 
 .ident__msg--building {
   -webkit-animation: float 1s infinite linear alternate;
@@ -738,6 +756,25 @@ body {
   background: #d40000 url("../images/afi-msg.jpg") no-repeat center center;
   background-size: contain;
   opacity: 0; }
+
+@-webkit-keyframes rise-bg-one {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0); } }
+@keyframes rise-bg-one {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0); } }
+.ident__background--rise--zero {
+  background: #79ff00 url("../images/rise-bg-0.png") repeat center; }
+
+.ident__background--rise--one {
+  -webkit-animation: rise-bg-one 4s 5s 1 forwards;
+  animation: rise-bg-one 4s 5s 1 forwards;
+  background: transparent url("../images/rise-bg-01.jpg") repeat center top;
+  background-size: 100%;
+  opacity: 0;
+  transform: translate3d(-2%, -2%, 0); }
 
 @-webkit-keyframes hide-controls {
   to {

@@ -1,4 +1,4 @@
-$building-bg-duration: 20s;
+$building-bg-duration: 25s;
 
 @include keyframes(building-bg-pan) {
   to {
@@ -7,41 +7,51 @@ $building-bg-duration: 20s;
 }
 
 @include keyframes(building-one-cut) {
-  0%, 24.9999% {
+  0%, 19.9999% {
     opacity: 1;
   }
 
-  25%, 99.999% {
+  20%, 99.999% {
     opacity: 0;
   }
 }
 
 @include keyframes(building-two-cut) {
-  0%, 24.999%, 74.999%, 99.999% {
+  0%, 19.999%, 40%, 99.999% {
     opacity: 0;
   }
 
-  25%, 50% {
+  20%, 39.999% {
     opacity: 1;
   }
 }
 
 @include keyframes(building-three-cut) {
-  0%, 49.999%, 75%, 99.999% {
+  0%, 39.999%, 60%, 99.999% {
     opacity: 0;
   }
 
-  50%, 74.999% {
+  40%, 59.999% {
     opacity: 1;
   }
 }
 
 @include keyframes(building-four-cut) {
-  0%, 74.999% {
+  0%, 59.999%, 80%, 99.999% {
     opacity: 0;
   }
 
-  75%, 99.999% {
+  60%, 79.999% {
+    opacity: 1;
+  }
+}
+
+@include keyframes(building-five-cut) {
+  0%, 79.999% {
+    opacity: 0;
+  }
+
+  80%, 99.999% {
     opacity: 1;
   }
 }
@@ -141,6 +151,16 @@ $building-bg-duration: 20s;
   background-position: left top;
   height: 110%;
   width: 150%;
+}
+
+.ident__background--building-five {
+  @include animation(
+    building-five-cut $building-bg-duration infinite
+  );
+  background-image: url("../images/building-bg-05.gif");
+  background-position: center;
+  height: 110%;
+  width: 110%;
 }
 
 .ident__msg--building {

@@ -131,6 +131,19 @@ var routes = {
       }
     };
   },
+  'rise': function(initialState) {
+    return {
+      id: 'ident--rise',
+      duration: 40000,
+      soundOpts: {
+        curve: 300,
+        oversample: '1x',
+        filterType: 'lowpass',
+        frequency: 6000,
+        playbackRate: 1
+      }
+    };
+  },
   'fourohfour': function(initialState) {
     return {
       id: 'ident--fourohfour'
@@ -297,6 +310,7 @@ function transitionTo(routeName) {
       curRouteIndex = playableRoutes.indexOf(route);
 
       if (curRouteIndex > -1) {
+        document.title = '▶︎ ' + document.title.split(' ')[1];
         route = playableRoutes[curRouteIndex];
       } else {
         route = notFoundRoute;
