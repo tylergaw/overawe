@@ -18,7 +18,7 @@ var routes = {
       id: 'ident--intro',
       soundOpts: {
         curve: 250,
-        oversample: '1x',
+        oversample: '2x',
         filterType: 'lowpass',
         frequency: 1000,
         playbackRate: 0.9
@@ -60,7 +60,7 @@ var routes = {
       id: 'ident--view',
       soundOpts: {
         curve: 1200,
-        oversample: '3x',
+        oversample: '4x',
         filterType: 'highpass',
         frequency: 1000,
         playbackRate: 0.9
@@ -73,7 +73,7 @@ var routes = {
       duration: 30000,
       soundOpts: {
         curve: 500,
-        oversample: '1x',
+        oversample: '2x',
         filterType: 'lowpass',
         frequency: 900,
         playbackRate: 1
@@ -124,7 +124,7 @@ var routes = {
       duration: 17000,
       soundOpts: {
         curve: 300,
-        oversample: '3x',
+        oversample: '4x',
         filterType: 'lowpass',
         frequency: 2000,
         playbackRate: 1
@@ -134,14 +134,20 @@ var routes = {
   'rise': function(initialState) {
     return {
       id: 'ident--rise',
-      duration: 40000,
+      duration: 34500,
       soundOpts: {
-        curve: 300,
-        oversample: '1x',
+        curve: 1000,
+        oversample: '4x',
         filterType: 'lowpass',
-        frequency: 6000,
+        frequency: 1500,
         playbackRate: 1
       }
+    };
+  },
+  'fin': function(initialState) {
+    return {
+      id: 'ident--fin',
+      duration: 6000
     };
   },
   'fourohfour': function(initialState) {
@@ -278,7 +284,10 @@ function render(state) {
     var id = activeEl.getAttribute('id');
     store[id].el.classList.add('hidden');
     store[id].el.classList.add('paused');
-    store[id].sound.pause();
+
+    if (store[id].sound) {
+      store[id].sound.pause();
+    }
   });
 
   state.el.classList.remove('hidden');
@@ -327,8 +336,15 @@ function populateStore() {
   playableRoutes.forEach(function(key) {
     var curStore = routes[key]();
     curStore.el = document.getElementById(key);
-    curStore.sound = createSound(curStore.el.querySelector('.ident__audio'),
-      curStore.soundOpts || {});
+
+    var audioEl = curStore.el.querySelector('.ident__audio');
+
+    if (audioEl) {
+      curStore.sound = createSound(curStore.el.querySelector('.ident__audio'),
+        curStore.soundOpts || {});
+    } else {
+      curStore.sound = null;
+    }
 
     store[key] = curStore;
   });
@@ -396,6 +412,8 @@ function init() {
   document.getElementById('btn-mute').addEventListener('click', mute, false);
 
   transitionTo(getRouteName());
+
+  console.info('don\'t be lookin\' in here ya turkey!');
 }
 
 window.addEventListener('load', init, false);

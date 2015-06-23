@@ -773,18 +773,26 @@ body {
   background: #79ff00 url("../images/rise-bg-0.png") repeat center; }
 
 .ident__background--rise--one {
+  -webkit-animation: rise-bg-one 3s 6s 1 forwards;
+  animation: rise-bg-one 3s 6s 1 forwards;
   background: transparent url("../images/rise-bg-01.jpg") repeat center top;
   background-size: cover;
-  opacity: 1; }
+  opacity: 0; }
 
-@-webkit-keyframes bg-two-in {
+@-webkit-keyframes element-in {
   to {
-    transform: translate3d(0, 45%, 0); } }
-@keyframes bg-two-in {
+    opacity: 1;
+    transform: translate3d(0, 0, 0); } }
+@keyframes element-in {
   to {
-    transform: translate3d(0, 45%, 0); } }
+    opacity: 1;
+    transform: translate3d(0, 0, 0); } }
 .ident__background--rise--two {
+  -webkit-animation: element-in 1.5s 7s 1 forwards;
+  animation: element-in 1.5s 7s 1 forwards;
+  transform: translate3d(0, 200%, 0);
   height: auto;
+  opacity: 0;
   top: 50%; }
   .ident__background--rise--two .ident__background__content {
     -webkit-animation: spin 4s infinite linear;
@@ -830,11 +838,23 @@ body {
     opacity: 0; }
   66%, 99.999% {
     opacity: 1; } }
+@-webkit-keyframes rise-three-float {
+  50% {
+    transform: translate3d(0, -10%, 0); } }
+@keyframes rise-three-float {
+  50% {
+    transform: translate3d(0, -10%, 0); } }
 .ident__background--rise--three {
+  -webkit-animation: element-in 0.2s 10.5s 1 cubic-bezier(0.5, 0.09, 0.69, 1.53) forwards;
+  animation: element-in 0.2s 10.5s 1 cubic-bezier(0.5, 0.09, 0.69, 1.53) forwards;
+  transform: translate3d(0, 300%, 0);
+  opacity: 0;
   height: auto;
   top: 30%;
   z-index: 777; }
   .ident__background--rise--three .ident__background__content {
+    -webkit-animation: rise-three-float 4s infinite linear;
+    animation: rise-three-float 4s infinite linear;
     margin: 0 auto;
     max-width: 275px;
     position: relative; }
@@ -875,32 +895,31 @@ body {
       -webkit-animation: bug-sequence-3 1s infinite;
       animation: bug-sequence-3 1s infinite; }
 
-@-webkit-keyframes butterfly-in {
-  to {
-    transform: translate3d(0, 45%, 0); } }
-@keyframes butterfly-in {
-  to {
-    transform: translate3d(0, 45%, 0); } }
 @-webkit-keyframes butter-fly {
   50% {
     transform: translate3d(0, -20%, 0); } }
 @keyframes butter-fly {
   50% {
     transform: translate3d(0, -20%, 0); } }
-.ident__background--butterfly .ident__background__content {
-  -webkit-animation: butter-fly 1.2s infinite ease alternate;
-  animation: butter-fly 1.2s infinite ease alternate;
-  margin: 0 auto;
-  position: relative;
-  top: 75%;
-  max-width: 150px; }
-  @media screen and (min-width: 1650px) {
-    .ident__background--butterfly .ident__background__content {
-      max-width: 180px;
-      top: 61%; } }
-  .ident__background--butterfly .ident__background__content img {
-    display: block;
-    width: 100%; }
+.ident__background--butterfly {
+  -webkit-animation: element-in 0.25s 10.5s 1 cubic-bezier(0.5, 0.09, 0.69, 1.53) forwards;
+  animation: element-in 0.25s 10.5s 1 cubic-bezier(0.5, 0.09, 0.69, 1.53) forwards;
+  opacity: 0;
+  transform: translate3d(0, 300%, 0); }
+  .ident__background--butterfly .ident__background__content {
+    -webkit-animation: butter-fly 1.2s infinite ease alternate;
+    animation: butter-fly 1.2s infinite ease alternate;
+    margin: 0 auto;
+    position: relative;
+    top: 75%;
+    max-width: 150px; }
+    @media screen and (min-width: 1650px) {
+      .ident__background--butterfly .ident__background__content {
+        max-width: 180px;
+        top: 61%; } }
+    .ident__background--butterfly .ident__background__content img {
+      display: block;
+      width: 100%; }
 
 @-webkit-keyframes birds-fly {
   35% {
@@ -908,19 +927,24 @@ body {
 @keyframes birds-fly {
   35% {
     transform: translate3d(0, -15%, 0); } }
-.ident__background--birds .ident__background__content {
-  -webkit-animation: birds-fly 1s infinite ease alternate;
-  animation: birds-fly 1s infinite ease alternate;
-  margin: 0 auto;
-  position: relative;
-  top: 87%;
-  max-width: 250px; }
-  @media screen and (min-width: 1650px) {
-    .ident__background--birds .ident__background__content {
-      max-width: 335px; } }
-  .ident__background--birds .ident__background__content img {
-    display: block;
-    width: 100%; }
+.ident__background--birds {
+  -webkit-animation: element-in 0.25s 10.6s 1 cubic-bezier(0.5, 0.09, 0.69, 1.53) forwards;
+  animation: element-in 0.25s 10.6s 1 cubic-bezier(0.5, 0.09, 0.69, 1.53) forwards;
+  opacity: 0;
+  transform: translate3d(0, 300%, 0); }
+  .ident__background--birds .ident__background__content {
+    -webkit-animation: birds-fly 1s infinite ease alternate;
+    animation: birds-fly 1s infinite ease alternate;
+    margin: 0 auto;
+    position: relative;
+    top: 87%;
+    max-width: 250px; }
+    @media screen and (min-width: 1650px) {
+      .ident__background--birds .ident__background__content {
+        max-width: 335px; } }
+    .ident__background--birds .ident__background__content img {
+      display: block;
+      width: 100%; }
 
 @-webkit-keyframes bills-stretch {
   50% {
@@ -929,6 +953,10 @@ body {
   50% {
     transform: scale3d(1.1, 1, 1) translate3d(0, -5%, 0); } }
 .ident__background--bills {
+  -webkit-animation: element-in 0.3s 10.5s 1 cubic-bezier(0.5, 0.09, 0.69, 1.53) forwards;
+  animation: element-in 0.3s 10.5s 1 cubic-bezier(0.5, 0.09, 0.69, 1.53) forwards;
+  opacity: 0;
+  transform: translate3d(0, 300%, 0);
   box-sizing: border-box;
   top: 35%;
   height: auto;
@@ -980,6 +1008,10 @@ body {
   95%, 100% {
     transform: rotate(0); } }
 .ident__background--deer {
+  -webkit-animation: element-in 0.25s 10.5s 1 cubic-bezier(0.5, 0.09, 0.69, 1.53) forwards;
+  animation: element-in 0.25s 10.5s 1 cubic-bezier(0.5, 0.09, 0.69, 1.53) forwards;
+  opacity: 0;
+  transform: translate3d(0, 300%, 0);
   bottom: -10px;
   height: auto;
   z-index: 10; }
@@ -995,15 +1027,24 @@ body {
       position: relative;
       width: 50%; }
   .ident__background--deer .deer-left {
-    -webkit-animation: deer-1 10s infinite linear alternate;
-    animation: deer-1 10s infinite linear alternate;
+    -webkit-animation: deer-1 4s infinite linear alternate;
+    animation: deer-1 4s infinite linear alternate;
     transform-origin: bottom right;
     transform: rotate(-120deg); }
   .ident__background--deer .deer-right {
-    -webkit-animation: deer-2 10s infinite linear alternate;
-    animation: deer-2 10s infinite linear alternate;
+    -webkit-animation: deer-2 4s infinite linear alternate;
+    animation: deer-2 4s infinite linear alternate;
     transform: rotate(120deg);
     transform-origin: bottom left; }
+
+.ident--fin {
+  background: black;
+  color: white;
+  font-size: 14px;
+  text-align: center; }
+
+.ident__msg--fin {
+  margin-top: 25%; }
 
 @-webkit-keyframes hide-controls {
   to {

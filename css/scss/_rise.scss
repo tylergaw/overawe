@@ -1,4 +1,5 @@
-$delay-rise: 0s;
+$delay-rise: 6s;
+$bounce-func: cubic-bezier(.5,.09,.69,1.53);
 
 @include keyframes(rise-bg-one) {
   to {
@@ -19,25 +20,25 @@ $delay-rise: 0s;
 
 // Main black sun bg
 .ident__background--rise--one {
-  // @include animation(rise-bg-one 4s $delay-rise 1 forwards);
+  @include animation(rise-bg-one 3s $delay-rise 1 forwards);
   background: transparent url("../images/rise-bg-01.jpg") repeat center top;
   background-size: cover;
-  opacity: 1;
+  opacity: 0;
 }
 
-@include keyframes(bg-two-in) {
+@include keyframes(element-in) {
   to {
-    transform: translate3d(0, 45%, 0);
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }
 
 // Big ass spinning circle
 .ident__background--rise--two {
-  // @include animation(bg-two-in 2s $delay-rise 1 forwards);
-  // transform: translate3d(0, 110%, 0);
-  // transform: translate3d(0, 45%, 0);
-  // bottom: -560px;
+  @include animation(element-in 1.5s ($delay-rise + 1) 1 forwards);
+  transform: translate3d(0, 200%, 0);
   height: auto;
+  opacity: 0;
   top: 50%;
 
   .ident__background__content {
@@ -88,14 +89,23 @@ $delay-rise: 0s;
   }
 }
 
+@include keyframes(rise-three-float) {
+  50% {
+    transform: translate3d(0, -10%, 0);
+  }
+}
 
 // Smaller spinning circle
 .ident__background--rise--three {
+  @include animation(element-in 0.2s ($delay-rise + 4.5) 1 $bounce-func forwards);
+  transform: translate3d(0, 300%, 0);
+  opacity: 0;
   height: auto;
   top: 30%;
   z-index: 777;
 
   .ident__background__content {
+    @include animation(rise-three-float 4s infinite linear);
     margin: 0 auto;
     max-width: 275px;
     position: relative;
@@ -155,12 +165,6 @@ $delay-rise: 0s;
   }
 }
 
-@include keyframes(butterfly-in) {
-  to {
-    transform: translate3d(0, 45%, 0);
-  }
-}
-
 @include keyframes(butter-fly) {
   50% {
     transform: translate3d(0, -20%, 0);
@@ -168,8 +172,9 @@ $delay-rise: 0s;
 }
 
 .ident__background--butterfly {
-  // @include animation(butterfly-in 2s 8s 1 forwards);
-  // transform: translate3d(0, 85%, 0);
+  @include animation(element-in 0.25s ($delay-rise + 4.5) 1 $bounce-func forwards);
+  opacity: 0;
+  transform: translate3d(0, 300%, 0);
 
   .ident__background__content {
     @include animation(butter-fly 1.2s infinite ease alternate);
@@ -197,8 +202,9 @@ $delay-rise: 0s;
 }
 
 .ident__background--birds {
-  // @include animation(butterfly-in 2s 8s 1 forwards);
-  // transform: translate3d(0, 85%, 0);
+  @include animation(element-in 0.25s ($delay-rise + 4.6) 1 $bounce-func forwards);
+  opacity: 0;
+  transform: translate3d(0, 300%, 0);
 
   .ident__background__content {
     @include animation(birds-fly 1s infinite ease alternate);
@@ -225,6 +231,10 @@ $delay-rise: 0s;
 }
 
 .ident__background--bills {
+  @include animation(element-in 0.3s ($delay-rise + 4.5) 1 $bounce-func forwards);
+  opacity: 0;
+  transform: translate3d(0, 300%, 0);
+
   box-sizing: border-box;
   top: 35%;
   height: auto;
@@ -280,6 +290,10 @@ $delay-rise: 0s;
 }
 
 .ident__background--deer {
+  @include animation(element-in 0.25s ($delay-rise + 4.5) 1 $bounce-func forwards);
+  opacity: 0;
+  transform: translate3d(0, 300%, 0);
+
   bottom: -10px;
   height: auto;
   z-index: 10;
@@ -300,13 +314,13 @@ $delay-rise: 0s;
   }
 
   .deer-left {
-    @include animation(deer-1 10s infinite linear alternate);
+    @include animation(deer-1 4s infinite linear alternate);
     transform-origin: bottom right;
     transform: rotate(-120deg);
   }
 
   .deer-right {
-    @include animation(deer-2 10s infinite linear alternate);
+    @include animation(deer-2 4s infinite linear alternate);
     transform: rotate(120deg);
     transform-origin: bottom left;
   }
