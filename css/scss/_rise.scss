@@ -12,15 +12,17 @@ $delay-rise: 0s;
   }
 }
 
+// Green dotted bg
 .ident__background--rise--zero {
   background: #79ff00 url("../images/rise-bg-0.png") repeat center;
 }
 
+// Main black sun bg
 .ident__background--rise--one {
-  @include animation(rise-bg-one 4s $delay-rise 1 forwards);
+  // @include animation(rise-bg-one 4s $delay-rise 1 forwards);
   background: transparent url("../images/rise-bg-01.jpg") repeat center top;
-  background-size: 100%;
-  opacity: 0;
+  background-size: cover;
+  opacity: 1;
 }
 
 @include keyframes(bg-two-in) {
@@ -29,19 +31,43 @@ $delay-rise: 0s;
   }
 }
 
+// Big ass spinning circle
 .ident__background--rise--two {
-  @include animation(bg-two-in 2s $delay-rise 1 forwards);
-  transform: translate3d(0, 110%, 0);
+  // @include animation(bg-two-in 2s $delay-rise 1 forwards);
+  // transform: translate3d(0, 110%, 0);
+  // transform: translate3d(0, 45%, 0);
+  // bottom: -560px;
+  height: auto;
+  top: 30%;
 
   .ident__background__content {
-    @include animation(spin 4s infinite linear);
+    // @include animation(spin 4s infinite linear);
     margin: 0 auto;
-    max-width: 950px;
+    max-width: 1460px;
     position: relative;
 
     img {
       display: block;
-      width: 100%;
+      margin: 0 auto;
+      width: 90%;
+    }
+  }
+}
+
+// Smaller spinning circle
+.ident__background--rise--three {
+  height: auto;
+  top: 20%;
+
+  .ident__background__content {
+    // @include animation(spin 4s infinite linear);
+    margin: 0 auto;
+    max-width: 350px;
+
+    img {
+      display: block;
+      margin: 0 auto;
+      width: 90%;
     }
   }
 }
@@ -54,12 +80,50 @@ $delay-rise: 0s;
 
 .ident__background--butterfly {
   // @include animation(butterfly-in 2s 8s 1 forwards);
-
-  transform: translate3d(0, 85%, 0);
+  // transform: translate3d(0, 85%, 0);
 
   .ident__background__content {
     margin: 0 auto;
-    width: 105px;
+    position: relative;
+    top: 75%;
+    max-width: 150px;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+}
+
+.ident__background--birds {
+  // @include animation(butterfly-in 2s 8s 1 forwards);
+  // transform: translate3d(0, 85%, 0);
+
+  .ident__background__content {
+    margin: 0 auto;
+    position: relative;
+    top: 85%;
+    max-width: 250px;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+}
+
+.ident__background--bills {
+  // @include animation(butterfly-in 2s 8s 1 forwards);
+  // transform: translate3d(0, 85%, 0);
+  box-sizing: border-box;
+  top: 35%;
+  height: auto;
+  padding: 0 50px;
+
+  .ident__background__content {
+    margin: 0 auto;
+    position: relative;
+    max-width: 950px;
 
     img {
       display: block;
@@ -69,27 +133,31 @@ $delay-rise: 0s;
 }
 
 .ident__background--deer {
-  transform: translate3d(0, 59%, 0);
+  // transform: translate3d(0, 59%, 0);
+  bottom: -10px;
+  height: auto;
+  z-index: 10;
 
   .ident__background__content {
-    position: relative;
     margin: 0 auto;
-    max-width: 980px;
+    max-width: 1600px;
+    width: 100%;
 
     img {
+      box-sizing: border-box;
       display: block;
       float: left;
+      padding: 0 5px;
       position: relative;
       width: 50%;
     }
   }
 
   .deer-left {
-    // left: 10%;
+
   }
 
   .deer-right {
-    // left: 50%;
     transform: scale3d(-1, 1, 1);
   }
 }
