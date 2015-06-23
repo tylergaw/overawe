@@ -38,12 +38,12 @@ $delay-rise: 0s;
   // transform: translate3d(0, 45%, 0);
   // bottom: -560px;
   height: auto;
-  top: 30%;
+  top: 50%;
 
   .ident__background__content {
-    // @include animation(spin 4s infinite linear);
+    @include animation(spin 4s infinite linear);
     margin: 0 auto;
-    max-width: 1460px;
+    max-width: 1800px;
     position: relative;
 
     img {
@@ -52,22 +52,98 @@ $delay-rise: 0s;
       width: 90%;
     }
   }
+
+  @media screen and (min-width: 1200px) {
+    top: 40%;
+  }
 }
+
+@include keyframes(bug-sequence-1) {
+  0%, 32.999% {
+    opacity: 1;
+  }
+
+  33%, 100% {
+    opacity: 0;
+  }
+}
+
+@include keyframes(bug-sequence-2) {
+  0%, 32.999%, 66%, 100% {
+    opacity: 0;
+  }
+
+  33%, 65.999% {
+    opacity: 1;
+  }
+}
+
+@include keyframes(bug-sequence-3) {
+  0%, 65.999%, 100% {
+    opacity: 0;
+  }
+
+  66%, 99.999% {
+    opacity: 1;
+  }
+}
+
 
 // Smaller spinning circle
 .ident__background--rise--three {
   height: auto;
-  top: 20%;
+  top: 30%;
 
   .ident__background__content {
-    // @include animation(spin 4s infinite linear);
     margin: 0 auto;
-    max-width: 350px;
+    max-width: 275px;
+    position: relative;
 
     img {
+      @include animation(spin 1.5s infinite reverse linear);
       display: block;
       margin: 0 auto;
       width: 90%;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    top: 15%;
+
+    .ident__background__content {
+      max-width: 420px;
+    }
+  }
+
+  @media screen and (min-width: 1500px) {
+    top: 30%;
+  }
+
+  .rise--three__sequence {
+    position: absolute;
+    height: 100%;
+    left: 15%;
+    top: 13%;
+    width: 100%;
+
+    img {
+      opacity: 0;
+      position: absolute;
+      width: 70%;
+    }
+
+    $bug-duration: 1s;
+
+    img:nth-child(1) {
+      @include animation(bug-sequence-1 $bug-duration infinite);
+    }
+
+    img:nth-child(2) {
+      @include animation(bug-sequence-2 $bug-duration infinite);
+    }
+
+    img:nth-child(3) {
+      @include animation(bug-sequence-3 $bug-duration infinite);
     }
   }
 }
@@ -78,20 +154,38 @@ $delay-rise: 0s;
   }
 }
 
+@include keyframes(butter-fly) {
+  50% {
+    transform: translate3d(0, -20%, 0);
+  }
+}
+
 .ident__background--butterfly {
   // @include animation(butterfly-in 2s 8s 1 forwards);
   // transform: translate3d(0, 85%, 0);
 
   .ident__background__content {
+    @include animation(butter-fly 1.2s infinite ease alternate);
     margin: 0 auto;
     position: relative;
     top: 75%;
     max-width: 150px;
 
+    @media screen and (min-width: 1650px) {
+      max-width: 180px;
+      top: 61%;
+    }
+
     img {
       display: block;
       width: 100%;
     }
+  }
+}
+
+@include keyframes(birds-fly) {
+  35% {
+    transform: translate3d(0, -15%, 0);
   }
 }
 
@@ -100,10 +194,15 @@ $delay-rise: 0s;
   // transform: translate3d(0, 85%, 0);
 
   .ident__background__content {
+    @include animation(birds-fly 1s infinite ease alternate);
     margin: 0 auto;
     position: relative;
-    top: 85%;
+    top: 87%;
     max-width: 250px;
+
+    @media screen and (min-width: 1650px) {
+      max-width: 335px;
+    }
 
     img {
       display: block;
@@ -112,15 +211,20 @@ $delay-rise: 0s;
   }
 }
 
+@include keyframes(bills-stretch) {
+  50% {
+    transform: scale3d(1.1, 1, 1) translate3d(0, -5%, 0);
+  }
+}
+
 .ident__background--bills {
-  // @include animation(butterfly-in 2s 8s 1 forwards);
-  // transform: translate3d(0, 85%, 0);
   box-sizing: border-box;
   top: 35%;
   height: auto;
   padding: 0 50px;
 
   .ident__background__content {
+    @include animation(bills-stretch 2s infinite linear alternate);
     margin: 0 auto;
     position: relative;
     max-width: 950px;
@@ -132,15 +236,50 @@ $delay-rise: 0s;
   }
 }
 
+@include keyframes(deer-1) {
+  5% {
+    transform: rotate(0);
+  }
+
+  20%, 40%, 60%, 80% {
+    transform: rotate(-0.9deg);
+  }
+
+  30%, 50%, 70%, 90% {
+    transform: rotate(0.5deg);
+  }
+
+  95%, 100% {
+    transform: rotate(0);
+  }
+}
+
+@include keyframes(deer-2) {
+  6% {
+    transform: rotate(0);
+  }
+
+  20%, 40%, 60%, 80% {
+    transform: rotate(0.7deg);
+  }
+
+  30%, 50%, 70%, 90% {
+    transform: rotate(-0.8deg);
+  }
+
+  95%, 100% {
+    transform: rotate(0);
+  }
+}
+
 .ident__background--deer {
-  // transform: translate3d(0, 59%, 0);
   bottom: -10px;
   height: auto;
   z-index: 10;
 
   .ident__background__content {
     margin: 0 auto;
-    max-width: 1600px;
+    max-width: 1900px;
     width: 100%;
 
     img {
@@ -154,10 +293,14 @@ $delay-rise: 0s;
   }
 
   .deer-left {
-
+    @include animation(deer-1 10s infinite linear alternate);
+    transform-origin: bottom right;
+    transform: rotate(-120deg);
   }
 
   .deer-right {
-    transform: scale3d(-1, 1, 1);
+    @include animation(deer-2 10s infinite linear alternate);
+    transform: rotate(120deg);
+    transform-origin: bottom left;
   }
 }

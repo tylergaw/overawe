@@ -785,26 +785,91 @@ body {
     transform: translate3d(0, 45%, 0); } }
 .ident__background--rise--two {
   height: auto;
-  top: 30%; }
+  top: 50%; }
   .ident__background--rise--two .ident__background__content {
+    -webkit-animation: spin 4s infinite linear;
+    animation: spin 4s infinite linear;
     margin: 0 auto;
-    max-width: 1460px;
+    max-width: 1800px;
     position: relative; }
     .ident__background--rise--two .ident__background__content img {
       display: block;
       margin: 0 auto;
       width: 90%; }
+  @media screen and (min-width: 1200px) {
+    .ident__background--rise--two {
+      top: 40%; } }
 
+@-webkit-keyframes bug-sequence-1 {
+  0%, 32.999% {
+    opacity: 1; }
+  33%, 100% {
+    opacity: 0; } }
+@keyframes bug-sequence-1 {
+  0%, 32.999% {
+    opacity: 1; }
+  33%, 100% {
+    opacity: 0; } }
+@-webkit-keyframes bug-sequence-2 {
+  0%, 32.999%, 66%, 100% {
+    opacity: 0; }
+  33%, 65.999% {
+    opacity: 1; } }
+@keyframes bug-sequence-2 {
+  0%, 32.999%, 66%, 100% {
+    opacity: 0; }
+  33%, 65.999% {
+    opacity: 1; } }
+@-webkit-keyframes bug-sequence-3 {
+  0%, 65.999%, 100% {
+    opacity: 0; }
+  66%, 99.999% {
+    opacity: 1; } }
+@keyframes bug-sequence-3 {
+  0%, 65.999%, 100% {
+    opacity: 0; }
+  66%, 99.999% {
+    opacity: 1; } }
 .ident__background--rise--three {
   height: auto;
-  top: 20%; }
+  top: 30%; }
   .ident__background--rise--three .ident__background__content {
     margin: 0 auto;
-    max-width: 350px; }
+    max-width: 275px;
+    position: relative; }
     .ident__background--rise--three .ident__background__content img {
+      -webkit-animation: spin 1.5s infinite reverse linear;
+      animation: spin 1.5s infinite reverse linear;
       display: block;
       margin: 0 auto;
       width: 90%; }
+  @media screen and (min-width: 1200px) {
+    .ident__background--rise--three {
+      top: 15%; }
+      .ident__background--rise--three .ident__background__content {
+        max-width: 420px; } }
+  @media screen and (min-width: 1500px) {
+    .ident__background--rise--three {
+      top: 30%; } }
+  .ident__background--rise--three .rise--three__sequence {
+    position: absolute;
+    height: 100%;
+    left: 15%;
+    top: 13%;
+    width: 100%; }
+    .ident__background--rise--three .rise--three__sequence img {
+      opacity: 0;
+      position: absolute;
+      width: 70%; }
+    .ident__background--rise--three .rise--three__sequence img:nth-child(1) {
+      -webkit-animation: bug-sequence-1 1s infinite;
+      animation: bug-sequence-1 1s infinite; }
+    .ident__background--rise--three .rise--three__sequence img:nth-child(2) {
+      -webkit-animation: bug-sequence-2 1s infinite;
+      animation: bug-sequence-2 1s infinite; }
+    .ident__background--rise--three .rise--three__sequence img:nth-child(3) {
+      -webkit-animation: bug-sequence-3 1s infinite;
+      animation: bug-sequence-3 1s infinite; }
 
 @-webkit-keyframes butterfly-in {
   to {
@@ -812,30 +877,61 @@ body {
 @keyframes butterfly-in {
   to {
     transform: translate3d(0, 45%, 0); } }
+@-webkit-keyframes butter-fly {
+  50% {
+    transform: translate3d(0, -20%, 0); } }
+@keyframes butter-fly {
+  50% {
+    transform: translate3d(0, -20%, 0); } }
 .ident__background--butterfly .ident__background__content {
+  -webkit-animation: butter-fly 1.2s infinite ease alternate;
+  animation: butter-fly 1.2s infinite ease alternate;
   margin: 0 auto;
   position: relative;
   top: 75%;
   max-width: 150px; }
+  @media screen and (min-width: 1650px) {
+    .ident__background--butterfly .ident__background__content {
+      max-width: 180px;
+      top: 61%; } }
   .ident__background--butterfly .ident__background__content img {
     display: block;
     width: 100%; }
 
+@-webkit-keyframes birds-fly {
+  35% {
+    transform: translate3d(0, -15%, 0); } }
+@keyframes birds-fly {
+  35% {
+    transform: translate3d(0, -15%, 0); } }
 .ident__background--birds .ident__background__content {
+  -webkit-animation: birds-fly 1s infinite ease alternate;
+  animation: birds-fly 1s infinite ease alternate;
   margin: 0 auto;
   position: relative;
-  top: 85%;
+  top: 87%;
   max-width: 250px; }
+  @media screen and (min-width: 1650px) {
+    .ident__background--birds .ident__background__content {
+      max-width: 335px; } }
   .ident__background--birds .ident__background__content img {
     display: block;
     width: 100%; }
 
+@-webkit-keyframes bills-stretch {
+  50% {
+    transform: scale3d(1.1, 1, 1) translate3d(0, -5%, 0); } }
+@keyframes bills-stretch {
+  50% {
+    transform: scale3d(1.1, 1, 1) translate3d(0, -5%, 0); } }
 .ident__background--bills {
   box-sizing: border-box;
   top: 35%;
   height: auto;
   padding: 0 50px; }
   .ident__background--bills .ident__background__content {
+    -webkit-animation: bills-stretch 2s infinite linear alternate;
+    animation: bills-stretch 2s infinite linear alternate;
     margin: 0 auto;
     position: relative;
     max-width: 950px; }
@@ -843,13 +939,49 @@ body {
       display: block;
       width: 100%; }
 
+@-webkit-keyframes deer-1 {
+  5% {
+    transform: rotate(0); }
+  20%, 40%, 60%, 80% {
+    transform: rotate(-0.9deg); }
+  30%, 50%, 70%, 90% {
+    transform: rotate(0.5deg); }
+  95%, 100% {
+    transform: rotate(0); } }
+@keyframes deer-1 {
+  5% {
+    transform: rotate(0); }
+  20%, 40%, 60%, 80% {
+    transform: rotate(-0.9deg); }
+  30%, 50%, 70%, 90% {
+    transform: rotate(0.5deg); }
+  95%, 100% {
+    transform: rotate(0); } }
+@-webkit-keyframes deer-2 {
+  6% {
+    transform: rotate(0); }
+  20%, 40%, 60%, 80% {
+    transform: rotate(0.7deg); }
+  30%, 50%, 70%, 90% {
+    transform: rotate(-0.8deg); }
+  95%, 100% {
+    transform: rotate(0); } }
+@keyframes deer-2 {
+  6% {
+    transform: rotate(0); }
+  20%, 40%, 60%, 80% {
+    transform: rotate(0.7deg); }
+  30%, 50%, 70%, 90% {
+    transform: rotate(-0.8deg); }
+  95%, 100% {
+    transform: rotate(0); } }
 .ident__background--deer {
   bottom: -10px;
   height: auto;
   z-index: 10; }
   .ident__background--deer .ident__background__content {
     margin: 0 auto;
-    max-width: 1600px;
+    max-width: 1900px;
     width: 100%; }
     .ident__background--deer .ident__background__content img {
       box-sizing: border-box;
@@ -858,8 +990,16 @@ body {
       padding: 0 5px;
       position: relative;
       width: 50%; }
+  .ident__background--deer .deer-left {
+    -webkit-animation: deer-1 10s infinite linear alternate;
+    animation: deer-1 10s infinite linear alternate;
+    transform-origin: bottom right;
+    transform: rotate(-120deg); }
   .ident__background--deer .deer-right {
-    transform: scale3d(-1, 1, 1); }
+    -webkit-animation: deer-2 10s infinite linear alternate;
+    animation: deer-2 10s infinite linear alternate;
+    transform: rotate(120deg);
+    transform-origin: bottom left; }
 
 @-webkit-keyframes hide-controls {
   to {
