@@ -93,6 +93,7 @@ $delay-rise: 0s;
 .ident__background--rise--three {
   height: auto;
   top: 30%;
+  z-index: 777;
 
   .ident__background__content {
     margin: 0 auto;
@@ -107,16 +108,22 @@ $delay-rise: 0s;
     }
   }
 
-  @media screen and (min-width: 1200px) {
-    top: 15%;
+  @media screen and (min-height: 960px) {
+    top: 40%;
+  }
+
+  @media screen and (min-width: 1200px) and (min-height: 1100px) {
+    top: 30%;
 
     .ident__background__content {
-      max-width: 420px;
+      max-width: 375px;
     }
   }
 
-  @media screen and (min-width: 1500px) {
-    top: 30%;
+  @media screen and (min-width: 1500px) and (min-height: 1100px) {
+    .ident__background__content {
+      max-width: 410px;
+    }
   }
 
   .rise--three__sequence {
@@ -279,7 +286,7 @@ $delay-rise: 0s;
 
   .ident__background__content {
     margin: 0 auto;
-    max-width: 1900px;
+    max-width: 1980px;
     width: 100%;
 
     img {

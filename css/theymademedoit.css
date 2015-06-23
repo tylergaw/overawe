@@ -832,7 +832,8 @@ body {
     opacity: 1; } }
 .ident__background--rise--three {
   height: auto;
-  top: 30%; }
+  top: 30%;
+  z-index: 777; }
   .ident__background--rise--three .ident__background__content {
     margin: 0 auto;
     max-width: 275px;
@@ -843,14 +844,17 @@ body {
       display: block;
       margin: 0 auto;
       width: 90%; }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-height: 960px) {
     .ident__background--rise--three {
-      top: 15%; }
+      top: 40%; } }
+  @media screen and (min-width: 1200px) and (min-height: 1100px) {
+    .ident__background--rise--three {
+      top: 30%; }
       .ident__background--rise--three .ident__background__content {
-        max-width: 420px; } }
-  @media screen and (min-width: 1500px) {
-    .ident__background--rise--three {
-      top: 30%; } }
+        max-width: 375px; } }
+  @media screen and (min-width: 1500px) and (min-height: 1100px) {
+    .ident__background--rise--three .ident__background__content {
+      max-width: 410px; } }
   .ident__background--rise--three .rise--three__sequence {
     position: absolute;
     height: 100%;
@@ -981,7 +985,7 @@ body {
   z-index: 10; }
   .ident__background--deer .ident__background__content {
     margin: 0 auto;
-    max-width: 1900px;
+    max-width: 1980px;
     width: 100%; }
     .ident__background--deer .ident__background__content img {
       box-sizing: border-box;
@@ -1067,8 +1071,8 @@ body {
 
 .animated.paused,
 .paused .animated {
-  -webkit-animation-play-state: paused;
-  animation-play-state: paused; }
+  -webkit-animation-play-state: paused !important;
+  animation-play-state: paused !important; }
 
 .hidden {
   display: none;
