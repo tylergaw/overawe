@@ -769,6 +769,25 @@ body {
 @keyframes spin {
   100% {
     transform: rotate(-359deg); } }
+@-webkit-keyframes marquee {
+  100% {
+    background-position: -6236px 10%; } }
+@keyframes marquee {
+  100% {
+    background-position: -6236px 10%; } }
+@-webkit-keyframes msg-in {
+  100% {
+    transform: translate3d(0, 0, 0); } }
+@keyframes msg-in {
+  100% {
+    transform: translate3d(0, 0, 0); } }
+.ident__msg--rise {
+  -webkit-animation: marquee 10s linear infinite, msg-in 0.2s 10.5s 1 cubic-bezier(0.5, 0.09, 0.69, 1.53) forwards;
+  animation: marquee 10s linear infinite, msg-in 0.2s 10.5s 1 cubic-bezier(0.5, 0.09, 0.69, 1.53) forwards;
+  background: transparent url("../images/rise-msg.png") repeat-x left 10%;
+  transform: translate3d(-100%, 0, 0);
+  width: 6236px; }
+
 .ident__background--rise--zero {
   background: #79ff00 url("../images/rise-bg-0.png") repeat center; }
 

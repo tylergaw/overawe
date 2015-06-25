@@ -13,6 +13,26 @@ $bounce-func: cubic-bezier(.5,.09,.69,1.53);
   }
 }
 
+@include keyframes(marquee) {
+  100% {
+    background-position: -6236px 10%;
+  }
+}
+
+@include keyframes(msg-in) {
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.ident__msg--rise {
+  @include animation(marquee 10s linear infinite,
+    msg-in 0.2s ($delay-rise + 4.5) 1 $bounce-func forwards);
+  background: transparent url("../images/rise-msg.png") repeat-x left 10%;
+  transform: translate3d(-100%, 0, 0);
+  width: 6236px;
+}
+
 // Green dotted bg
 .ident__background--rise--zero {
   background: #79ff00 url("../images/rise-bg-0.png") repeat center;
