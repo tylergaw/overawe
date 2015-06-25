@@ -12,7 +12,14 @@ var namespace = 'overawe/',
   store = {},
   CtxClass = window.AudioContext || window.webkitAudioContext,
   ctx = new CtxClass(),
-  isSafari = navigator.userAgent.indexOf('Safari') > -1;
+  isSafari = /^((?!chrome).)*safari/i.test(navigator.userAgent);
+
+function preload(imgs) {
+  imgs.forEach(function(filename, index) {
+    var img = new Image();
+    img.src = 'images/' + filename;
+  })
+};
 
 var routes = {
   'intro': function(initialState) {
@@ -24,6 +31,14 @@ var routes = {
         filterType: 'lowpass',
         frequency: 1000,
         playbackRate: 0.9
+      },
+      onstart: function() {
+        preload([
+          'armed-bg-01.png',
+          'armed-bg-extra-01.png',
+          'armed-msg-01.png',
+          'armed-subject-01.png'
+        ]);
       }
     };
   },
@@ -37,12 +52,28 @@ var routes = {
         filterType: 'lowpass',
         frequency: 900,
         playbackRate: 1.5
+      },
+      onstart: function() {
+        preload([
+          'find-msg-01.jpg',
+          'find-subject-01.png',
+          'find-bg-01.jpg'
+        ]);
       }
     };
   },
   'find': function(initialState) {
     return {
-      id: 'ident--find'
+      id: 'ident--find',
+      onstart: function() {
+        preload([
+          'win-bg-01.png',
+          'win-bg-02.gif',
+          'win-bg-paused.jpg',
+          'win-msg-01.png',
+          'win-subject-01.png'
+        ]);
+      }
     };
   },
   'win': function(initialState) {
@@ -54,6 +85,11 @@ var routes = {
         filterType: 'highpass',
         frequency: 100,
         playbackRate: 0.9
+      },
+      onstart: function() {
+        preload([
+          'view-subject-01.png'
+        ]);
       }
     };
   },
@@ -66,6 +102,17 @@ var routes = {
         filterType: 'highpass',
         frequency: 1000,
         playbackRate: 0.9
+      },
+      onstart: function() {
+        preload([
+          'dog-bg-01.jpg',
+          'dog-msg-01.png',
+          'dog-subject-01.png',
+          'dog-subject-02.png',
+          'dog-subject-03.png',
+          'dog-subject-04.png',
+          'dog-subject-05.png'
+        ]);
       }
     };
   },
@@ -79,6 +126,13 @@ var routes = {
         filterType: 'lowpass',
         frequency: 900,
         playbackRate: 1
+      },
+      onstart: function() {
+        preload([
+          'precious-bg-01.gif',
+          'precious-msg-01.png',
+          'precious-subject-01.png'
+        ]);
       }
     };
   },
@@ -91,6 +145,11 @@ var routes = {
         filterType: 'highpass',
         frequency: 700,
         playbackRate: 1.1
+      },
+      onstart: function() {
+        preload([
+          'north-msg-01.png'
+        ]);
       }
     };
   },
@@ -104,6 +163,13 @@ var routes = {
         filterType: 'lowpass',
         frequency: 20000,
         playbackRate: 1
+      },
+      onstart: function() {
+        preload([
+          'buy-bg-01.png',
+          'buy-msg-01.gif',
+          'buy-msg-paused.png'
+        ]);
       }
     };
   },
@@ -117,6 +183,11 @@ var routes = {
         filterType: 'highpass',
         frequency: 100,
         playbackRate: 1.5
+      },
+      onstart: function() {
+        preload([
+          'afi-msg.jpg'
+        ]);
       }
     };
   },
@@ -130,6 +201,13 @@ var routes = {
         filterType: 'lowpass',
         frequency: 2000,
         playbackRate: 1
+      },
+      onstart: function() {
+        preload([
+          'rise-bg-0.png',
+          'rise-bg-01.jpg',
+          'rise-msg.png'
+        ]);
       }
     };
   },
@@ -143,6 +221,12 @@ var routes = {
         filterType: 'lowpass',
         frequency: 1500,
         playbackRate: 1
+      },
+      onstart: function() {
+        preload([
+          'fin-bg.jpg',
+          'fin-msg.png'
+        ]);
       }
     };
   },
@@ -264,6 +348,8 @@ function createSound(audio, opts) {
     biquadFilter.type = opts.filterType || 'lowpass';
     biquadFilter.frequency.value = opts.frequency || 15000;
 
+    // This appears to be the source of the problem when ran in Safari. These all
+    // exist, but cause Safari to become unresponsive and crash.
     var src = ctx.createMediaElementSource(audio);
     src.connect(biquadFilter);
     biquadFilter.connect(gainNode);
@@ -314,6 +400,10 @@ function render(state) {
 
   if (isPlaying && !isSticky && !isStaticRoute(curRouteName)) {
     sceneInterval = setInterval(state.onend || advance, state.duration || sceneDuration);
+  }
+
+  if (state.onstart) {
+    state.onstart();
   }
 }
 
