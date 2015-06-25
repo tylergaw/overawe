@@ -147,7 +147,10 @@ var routes = {
   'fin': function(initialState) {
     return {
       id: 'ident--fin',
-      duration: 6000
+      duration: 8000,
+      onend: function() {
+        transitionTo('intro');
+      }
     };
   },
   'fourohfour': function(initialState) {
@@ -185,7 +188,10 @@ function makeItStop() {
     document.title = '▶︎ ' + document.title.split(' ')[1];
 
   } else {
-    sound.pause();
+    if (sound) {
+      sound.pause();
+    }
+
     target.classList.add(className);
     isPlaying = false;
     clearInterval(sceneInterval);
@@ -302,7 +308,7 @@ function render(state) {
   }
 
   if (isPlaying && !isSticky && !isStaticRoute(curRouteName)) {
-    sceneInterval = setInterval(advance, state.duration || sceneDuration);
+    sceneInterval = setInterval(state.onend || advance, state.duration || sceneDuration);
   }
 }
 
