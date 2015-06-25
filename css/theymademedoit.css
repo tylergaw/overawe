@@ -1037,15 +1037,27 @@ body {
     transform: rotate(120deg);
     transform-origin: bottom left; }
 
-.ident--fin {
-  background: black;
-  color: white;
-  font-size: 14px;
-  text-align: center; }
+@-webkit-keyframes bg-pan {
+  to {
+    transform: translate3d(-15%, -3%, 0) scale3d(1.5, 1.5, 0); } }
+@keyframes bg-pan {
+  to {
+    transform: translate3d(-15%, -3%, 0) scale3d(1.5, 1.5, 0); } }
+.ident__background--fin {
+  -webkit-animation: bg-pan 40s infinite linear;
+  animation: bg-pan 40s infinite linear;
+  background: black url("../images/fin-bg.jpg") no-repeat left center;
+  background-size: 100%;
+  height: 110%;
+  width: 150%; }
 
 .ident__msg--fin {
-  margin-top: 25%; }
+  background: transparent url("../images/fin-msg.png") no-repeat center center;
+  background-size: 90%; }
 
+@media screen and (min-width: 490px) {
+  .ident__msg--fin {
+    background-size: auto; } }
 @-webkit-keyframes hide-controls {
   to {
     background-color: transparent; } }
