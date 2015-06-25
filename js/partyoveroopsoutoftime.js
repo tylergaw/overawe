@@ -10,7 +10,9 @@ var namespace = 'overawe/',
   notFoundRoute = 'fourohfour',
   canvas = document.getElementById('canvas'),
   store = {},
-  ctx = new AudioContext();
+  CtxClass = window.AudioContext || window.webkitAudioContext,
+  ctx = new CtxClass(),
+  isSafari = navigator.userAgent.indexOf('Safari') > -1;
 
 var routes = {
   'intro': function(initialState) {
@@ -249,26 +251,28 @@ function makeDistortionCurve(amount) {
 };
 
 function createSound(audio, opts) {
-  var distortion = ctx.createWaveShaper();
-  var gainNode = ctx.createGain();
-  var biquadFilter = ctx.createBiquadFilter();
+  // Safari loses it's goddamn mind when trying to do any of this. Just don't even.
+  if (!isSafari) {
+    var distortion = ctx.createWaveShaper();
+    var gainNode = ctx.createGain();
+    var biquadFilter = ctx.createBiquadFilter();
 
-  distortion.curve = makeDistortionCurve(opts.curve || 5000);
-  // This can only be 'none', '2x', '4x'
-  distortion.oversample = opts.oversample || '4x';
+    distortion.curve = makeDistortionCurve(opts.curve || 5000);
+    // This can only be 'none', '2x', '4x'
+    distortion.oversample = opts.oversample || '4x';
 
-  biquadFilter.type = opts.filterType || 'lowpass';
-  biquadFilter.frequency.value = opts.frequency || 15000;
+    biquadFilter.type = opts.filterType || 'lowpass';
+    biquadFilter.frequency.value = opts.frequency || 15000;
+
+    var src = ctx.createMediaElementSource(audio);
+    src.connect(biquadFilter);
+    biquadFilter.connect(gainNode);
+    gainNode.connect(distortion);
+    distortion.connect(ctx.destination);
+  }
 
   audio.loop = true;
   audio.playbackRate = opts.playbackRate || 0.5;
-
-  var src = ctx.createMediaElementSource(audio);
-  src.connect(biquadFilter);
-  biquadFilter.connect(gainNode);
-  gainNode.connect(distortion);
-  distortion.connect(ctx.destination);
-
   return audio;
 }
 
@@ -301,6 +305,7 @@ function render(state) {
 
   if (playAudio && state.sound) {
     try {
+      window.sound = state.sound;
       state.sound.play();
     } catch (e) {
       console.log('No sound found. Hey, that rhymes.');
@@ -416,7 +421,6 @@ function init() {
   }, false);
 
   document.getElementById('btn-mute').addEventListener('click', mute, false);
-
   transitionTo(getRouteName());
 
   console.info('don\'t be lookin\' in here ya turkey!');
