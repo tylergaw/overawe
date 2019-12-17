@@ -431,7 +431,8 @@ function transitionTo(routeName) {
     }
   }
 
-  window.history.pushState({}, '', baseHref + route + window.location.search);
+  // FIXME: Turned off during Netlify migration because of cross origin
+  //   window.history.pushState({}, '', baseHref + route + window.location.search);
   curRouteName = route;
   render(store[route]);
 }
