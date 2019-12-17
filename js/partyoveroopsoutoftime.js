@@ -359,7 +359,8 @@ function createSound(audio, opts) {
     gainNode.connect(distortion);
     distortion.connect(ctx.destination);
   }
-
+  
+  audio.crossOrigin = "anonymous";
   audio.loop = true;
   audio.playbackRate = opts.playbackRate || 0.5;
   return audio;
