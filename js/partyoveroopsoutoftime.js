@@ -14,6 +14,9 @@ var namespace = 'overawe/',
   ctx = new CtxClass(),
   isSafari = /^((?!chrome).)*safari/i.test(navigator.userAgent);
 
+var base = document.querySelector("base");
+var baseHref = base ? base.href : "";
+
 function preload(imgs) {
   imgs.forEach(function(filename, index) {
     var img = new Image();
@@ -428,7 +431,7 @@ function transitionTo(routeName) {
     }
   }
 
-  window.history.pushState({}, '', route + window.location.search);
+  window.history.pushState({}, '', baseHref + route + window.location.search);
   curRouteName = route;
   render(store[route]);
 }
